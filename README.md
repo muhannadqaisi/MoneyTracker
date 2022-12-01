@@ -1,7 +1,7 @@
 # MoneyTracker
 Created by Muhannad Qaisi 
 
-Welcome to the MoneyTracker wiki! :-) 
+Welcome to the MoneyTracker! :-) 
 
 -Here you can manage your monthly expenses. Money Tracker lets you easily track all your expenses such as housing expenses, food expenses and more. It also gives you the ability to add customized expense items.
 
