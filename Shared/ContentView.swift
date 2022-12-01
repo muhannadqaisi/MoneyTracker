@@ -81,7 +81,7 @@ struct ContentView: View {
         if showWelcome || UserDefaults.standard.welcomeScreenShownPlay4 {
             VStack {
                 ExpenseCardView()
-                Divider()
+                //Divider()
                 Spacer().frame(height:12)
                 HStack{
                     if ((Int(total()) - Int(totalExpense())) >= 0) {
