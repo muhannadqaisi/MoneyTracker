@@ -141,7 +141,7 @@ struct ContentView: View {
                     Text("Monthly Income")
                         .font(.system(size: 18, weight: .light))
                         .padding()
-                    Text("$\(Int(viewModel.total()))")
+                    Text(viewModel.total(), format: .currency(code: "USD"))
                         .font(.system(size: 20, weight: .bold))
                         .lineLimit(1)
                         .multilineTextAlignment(.leading)
@@ -155,7 +155,7 @@ struct ContentView: View {
                         .font(.system(size: 18, weight: .light))
                         .padding()
                     
-                    Text("$\(Int(viewModel.totalExpense()))")
+                    Text(viewModel.totalExpense(), format: .currency(code: "USD"))
                         .font(.system(size: 20, weight: .bold))
                         .lineLimit(1)
                         .multilineTextAlignment(.leading)
@@ -180,11 +180,11 @@ struct ContentView: View {
     func LeftToBudget()-> some View {
         HStack{
             if (viewModel.total() - viewModel.totalExpense() >= 0) {
-                Text("$\(viewModel.total() - viewModel.totalExpense())")
+                Text(viewModel.total() - viewModel.totalExpense(), format: .currency(code: "USD"))
                     .font(.system(size: 20, weight: .regular))
                     .foregroundColor(Color(hue: 0.303, saturation: 0.83, brightness: 0.68))
             } else {
-                Text("$\(viewModel.total() - viewModel.totalExpense())")
+                Text(viewModel.total() - viewModel.totalExpense(), format: .currency(code: "USD"))
                     .font(.system(size: 20, weight: .regular))
                     .foregroundColor(Color.red)
             }
@@ -299,15 +299,15 @@ struct DetailedView: View {
             Spacer().frame(width:50)
             VStack(alignment: .leading) {
                 Spacer().frame(height:8)
-                Text("Income: $\(subTitle * viewModel.total())")
+                Text("Income: \(subTitle * viewModel.total(), format: .currency(code: "USD"))")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)
                     .foregroundColor(Color.green)
-                Text("Expenses: $\(subTitle * viewModel.totalExpense())")
+                Text("Expenses: \(subTitle * viewModel.totalExpense(), format: .currency(code: "USD"))")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)
                     .foregroundColor(Color.red)
-                Text("Saved: $\(subTitle * ((Int(viewModel.total()) - Int(viewModel.totalExpense()))))")
+                Text("Saved: \(subTitle * (viewModel.total() - viewModel.totalExpense()), format: .currency(code: "USD"))")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)
                     .foregroundColor(Color.blue)
