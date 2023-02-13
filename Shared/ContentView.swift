@@ -8,25 +8,6 @@
 import SwiftUI
 import CoreData
 
-struct HeaderView: View {
-    
-    var body: some View {
-        VStack(alignment: .center){
-            HStack{
-                Text("2000")
-                    .font(.title)
-                Text("left to budget")
-                    .foregroundColor(.white)
-                    .font(.title)
-            }
-            .frame(maxWidth: .infinity)
-        }
-        .background(.green)
-    }
-    
-}
-
-
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -48,68 +29,32 @@ struct ContentView: View {
     var memberships: FetchedResults<MTMembership>
     @Environment(\.colorScheme) var colorScheme
 
-    @State private var numOne: Int = 0
-    @State private var numTwo: Int = 0
-    
     private static let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter
     }()
     
-    private var result: Int {
-        numOne + numTwo
-    }
     enum FocusText{
         case item, amount
     }
-    @State var isPresenting = false /// 1.
     
-    @FocusState var isInputActive: Bool
-    @FocusState private var focusField: FocusText?
-    @State private var itemText = ""
-    @State private var amountText = ""
-    @State private var submittedText = "Display creds"
-    
-    //@FocusState var focusedField: Field?
     @State var showDetailedSheet = false
     @State private var showingAlert = false
     @State private var showWelcome: Bool = false
     
     
     var body: some View {
+        let diff = total() - totalExpense()
         if showWelcome || UserDefaults.standard.welcomeScreenShownPlay4 {
             VStack {
                 ExpenseCardView()
-                //Divider()
                 Spacer().frame(height:12)
-                HStack{
-                    if ((Int(total()) - Int(totalExpense())) >= 0) {
-                        Text("$\(Int(total()) - Int(totalExpense()))")
-                            .font(.system(size: 20, weight: .regular))
-                            .foregroundColor(Color(hue: 0.303, saturation: 0.83, brightness: 0.68))
-                    } else {
-                        Text("$\(Int(total()) - Int(totalExpense()))")
-                            .font(.system(size: 20, weight: .regular))
-                            .foregroundColor(Color.red)
-                    }
-                    Text("left to budget")
-                        .font(.system(size: 20, weight: .light))
-                    Button(action: {
-                        showDetailedSheet = true
-                    }, label: {
-                        Image(systemName: "arrow.up.circle")
-                            .imageScale(.large)
-                            .tint(Color.blue)
-                        
-                    })
-                }
-                
+                LeftToBudget()
                 KeyboardView {
                     List{
-                        Section(header: Text("Income").font(.title3)) {
-                            LineIncomesView(viewModel: LineIncomesViewModel(moc:viewContext))
-                        }
+                        //IncomeAndExpenseGraphView()
+                        IncomeListView(viewModel: IncomeListViewModel(moc: viewContext))
                         Section(header: Text("Savings").font(.title3)) {
                             LineSavingsView(viewModel: LineSavingsViewModel(moc:viewContext))
                         }
@@ -139,7 +84,11 @@ struct ContentView: View {
                         .alert("Reset Data?", isPresented: $showingAlert) {
                             Button("OK", role: .cancel) {
                                 self.didClickReset()
-                                addEmptyLine()
+                                do {
+                                    try viewContext.save()
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
                             }
                         }
                         
@@ -166,39 +115,8 @@ struct ContentView: View {
             }
             .frame(maxWidth: .infinity)
             .background{
-                ZStack{
-                    VStack{
-                        HStack{
-                            Circle()
-                                .fill(Color.green)
-                                .scaleEffect(1.1)
-                                .offset(x:-120)
-                                .offset(y:40)
-                                .blur(radius: 120)
-                        }
-                        HStack{
-                            Circle()
-                                .fill(Color.red)
-                                .scaleEffect(1.1)
-                                .offset(y:-290)
-                                .offset(x:200)
-                                .blur(radius: 120)
-                        }
-                        
-                        HStack{
-                            Circle()
-                                .fill(Color.gray)
-                                .scaleEffect(0.8)
-                                .offset(x:20)
-                                .offset(y:-129)
-                                .blur(radius: 120)
-                        }
-                        
-                    }
-                }
-                .ignoresSafeArea()
+                BlurredHeaderView()
             }
-            //.preferredColorScheme(.light)
             
         } else {
             WelcomeScreen(done: $showWelcome)
@@ -296,51 +214,80 @@ struct ContentView: View {
                 
             }
         }
-        //        GeometryReader{proxy in
-        //            RoundedRectangle(cornerRadius: 0, style: .continuous)
-        //                .fill(
-        //                    .linearGradient(colors: [Color(red: 0.0, green: 0.8, blue: 0.3),Color(red: 1.3, green: 0.1, blue: 0.1)], startPoint: .leading, endPoint: .trailing))
-        //            VStack {
-        //                VStack(spacing: 0){
-        //                    Text("Monthly Income")
-        //                        .font(.system(size: 18, weight: .light))
-        //                        .padding()
-        //                        .foregroundColor(Color.white)
-        //                    Text("$\(Int(total()))")
-        //                        .font(.system(size: 20, weight: .bold))
-        //                        .foregroundColor(Color.white)
-        //                        .lineLimit(1)
-        //                        .multilineTextAlignment(.leading)
-        //                        .padding(.bottom, 5)
-        //                }
-        //            }
-        //            .foregroundColor(.white)
-        //            .frame(maxWidth: .infinity , maxHeight: .infinity, alignment: .leading)
-        //
-        //            VStack {
-        //                VStack(spacing: 0){
-        //                    Text("Monthly Expenses")
-        //                        .font(.system(size: 18, weight: .light))
-        //                        .padding()
-        //                        .foregroundColor(Color.white)
-        //
-        //
-        //                    Text("$\(Int(totalExpense()))")
-        //                        .font(.system(size: 20, weight: .bold))
-        //                        .foregroundColor(Color.white)
-        //                        .lineLimit(1)
-        //                        .multilineTextAlignment(.leading)
-        //                        .padding(.bottom, 5)
-        //                }
-        //            }
-        //            .foregroundColor(.white)
-        //            .frame(maxWidth: .infinity , maxHeight: .infinity, alignment: .trailing)
-        //        }
-        //        .frame(height: 90)
-        //        .padding(.top)
-        //        .clipped()
+    }
+    func IncomeAndExpenseGraphView()-> some View {
+        VStack {
+            if(total() != .zero){
+                PieChartView(values: [Double(total()), Double(totalExpense())], names: ["Total Income", "Total Expense"], formatter: {value in String(format: "$%.2f", value)}, colors: [Color(hue: 0.3, saturation: 0.70, brightness: 0.90), Color.red])
+                
+            } else {
+                EmptyPieChartView(values: [1, 0], names: ["Total Income", "Other Income"], formatter: {value in String(format: "$%.2f", value)}, colors: [Color.gray, Color.gray])
+            }
+
+        }
+        
+    }
+    func LeftToBudget()-> some View {
+        HStack{
+            if (total() - totalExpense() >= 0) {
+                Text("$\(total() - totalExpense())")
+                    .font(.system(size: 20, weight: .regular))
+                    .foregroundColor(Color(hue: 0.303, saturation: 0.83, brightness: 0.68))
+            } else {
+                Text("$\(total() - totalExpense())")
+                    .font(.system(size: 20, weight: .regular))
+                    .foregroundColor(Color.red)
+            }
+            Text("left to budget")
+                .font(.system(size: 20, weight: .light))
+            Button(action: {
+                showDetailedSheet = true
+            }, label: {
+                Image(systemName: "arrow.up.circle")
+                    .imageScale(.large)
+                    .tint(Color.blue)
+                
+            })
+        }
+        
     }
     
+}
+
+struct BlurredHeaderView: View {
+    var body: some View{
+        ZStack{
+            VStack{
+                HStack{
+                    Circle()
+                        .fill(Color.green)
+                        .scaleEffect(1.1)
+                        .offset(x:-120)
+                        .offset(y:40)
+                        .blur(radius: 120)
+                }
+                HStack{
+                    Circle()
+                        .fill(Color.red)
+                        .scaleEffect(1.1)
+                        .offset(y:-290)
+                        .offset(x:200)
+                        .blur(radius: 120)
+                }
+                
+                HStack{
+                    Circle()
+                        .fill(Color.gray)
+                        .scaleEffect(0.8)
+                        .offset(x:20)
+                        .offset(y:-129)
+                        .blur(radius: 120)
+                }
+                
+            }
+        }
+        .ignoresSafeArea()
+    }
 }
 
 
