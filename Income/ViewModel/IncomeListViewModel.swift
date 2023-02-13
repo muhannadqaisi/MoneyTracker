@@ -29,7 +29,7 @@ class IncomeListViewModel: ObservableObject{
         expense.name = ""
         do {
             try self.moc.save()
-            print("Order saved.")
+            print("Saved")
         } catch {
             print(error.localizedDescription)
         }
@@ -53,7 +53,7 @@ class IncomeListViewModel: ObservableObject{
             offset.map{ self.Incomes[$0]} .forEach(self.moc.delete)
             do {
                 try self.moc.save()
-                print("Order saved.")
+                print("Saved")
             } catch {
                 print(error.localizedDescription)
             }
@@ -67,7 +67,7 @@ class IncomeListViewModel: ObservableObject{
             expense.name = name
             do {
                 try self.moc.save()
-                print("Order saved.")
+                print("Saved")
             } catch {
                 print(error.localizedDescription)
             }

@@ -45,7 +45,6 @@ struct ContentView: View {
     
     
     var body: some View {
-        let diff = total() - totalExpense()
         if showWelcome || UserDefaults.standard.welcomeScreenShownPlay4 {
             VStack {
                 ExpenseCardView()
@@ -136,7 +135,7 @@ struct ContentView: View {
         }
         return totalToday
     }
-    
+
     func totalExpense() -> Int {
         var totalToday: Int = 0
         for item in savings {
@@ -170,7 +169,7 @@ struct ContentView: View {
         expense.name = ""
         do {
             try viewContext.save()
-            print("Order saved.")
+            print("Saved")
         } catch {
             print(error.localizedDescription)
         }
@@ -179,6 +178,7 @@ struct ContentView: View {
     @ViewBuilder
     func ExpenseCardView()-> some View
     {
+        let vm = IncomeAndExpenseViewModel(moc: viewContext)
         VStack {
             Spacer().frame(height:12)
             HStack{
@@ -191,7 +191,7 @@ struct ContentView: View {
                     Text("Monthly Income")
                         .font(.system(size: 18, weight: .light))
                         .padding()
-                    Text("$\(Int(total()))")
+                    Text("$\(Int(vm.total()))")
                         .font(.system(size: 20, weight: .bold))
                         .lineLimit(1)
                         .multilineTextAlignment(.leading)
@@ -205,7 +205,7 @@ struct ContentView: View {
                         .font(.system(size: 18, weight: .light))
                         .padding()
                     
-                    Text("$\(Int(totalExpense()))")
+                    Text("$\(Int(vm.totalExpense()))")
                         .font(.system(size: 20, weight: .bold))
                         .lineLimit(1)
                         .multilineTextAlignment(.leading)
@@ -319,9 +319,9 @@ struct OrderSheet: View {
 
 
 struct DetailedView: View {
-    var title: String = "title"
+    var title: String = ""
     var subTitle: Int = 0
-    var imageName: String = "car"
+    var imageName: String = ""
     var distance: Int = 0
     
     @FetchRequest(entity: MTSavings.entity(), sortDescriptors: [])

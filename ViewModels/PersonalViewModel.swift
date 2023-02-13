@@ -91,7 +91,7 @@ class LinePersonalsViewModel: ObservableObject
         expense.name = ""
         do {
             try contextMOC.save()
-            print("Order saved.")
+            print("Saved")
         } catch {
             print(error.localizedDescription)
         }
@@ -156,7 +156,7 @@ struct LinePersonalsView: View {
             expense.name = name
             do {
                 try viewContext.save()
-                print("Order saved.")
+                print("Saved")
             } catch {
                 print(error.localizedDescription)
             }

@@ -93,7 +93,7 @@ class LineFoodsViewModel: ObservableObject
         expense.name = ""
         do {
             try contextMOC.save()
-            print("Order saved.")
+            print("Saved")
         } catch {
             print(error.localizedDescription)
         }
@@ -144,7 +144,7 @@ struct LineFoodsView: View {
             offset.map{ viewModel.Foods[$0]} .forEach(viewContext.delete)
             do {
                 try viewContext.save()
-                print("Order saved.")
+                print("Saved")
             } catch {
                 print(error.localizedDescription)
             }
@@ -158,7 +158,7 @@ struct LineFoodsView: View {
             expense.name = name
             do {
                 try viewContext.save()
-                print("Order saved.")
+                print("Saved")
             } catch {
                 print(error.localizedDescription)
             }

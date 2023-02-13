@@ -44,6 +44,8 @@
 		F94EAA10299A62BC00CE7787 /* IncomeLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA0E299A62BC00CE7787 /* IncomeLineViewModel.swift */; };
 		F94EAA12299A63DE00CE7787 /* IncomeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA11299A63DE00CE7787 /* IncomeLineView.swift */; };
 		F94EAA13299A63DE00CE7787 /* IncomeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA11299A63DE00CE7787 /* IncomeLineView.swift */; };
+		F94EAA16299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA15299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift */; };
+		F94EAA17299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA15299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift */; };
 		F9B702372849D72A001BCA66 /* KeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B702362849D72A001BCA66 /* KeyBoardView.swift */; };
 		F9B702382849D72A001BCA66 /* KeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B702362849D72A001BCA66 /* KeyBoardView.swift */; };
 		F9B7023C284B7E08001BCA66 /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B7023B284B7E08001BCA66 /* WelcomePage.swift */; };
@@ -94,6 +96,7 @@
 		F94EAA0B299A614F00CE7787 /* IncomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListView.swift; sourceTree = "<group>"; };
 		F94EAA0E299A62BC00CE7787 /* IncomeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeLineViewModel.swift; sourceTree = "<group>"; };
 		F94EAA11299A63DE00CE7787 /* IncomeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeLineView.swift; sourceTree = "<group>"; };
+		F94EAA15299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeAndExpenseViewModel.swift; sourceTree = "<group>"; };
 		F9B702362849D72A001BCA66 /* KeyBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardView.swift; sourceTree = "<group>"; };
 		F9B7023B284B7E08001BCA66 /* WelcomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,6 +223,7 @@
 		F94EAA08299A60DC00CE7787 /* Income */ = {
 			isa = PBXGroup;
 			children = (
+				F94EAA14299A7A6A00CE7787 /* Total */,
 				F94EAA09299A60E900CE7787 /* ViewModel */,
 				F94EAA0A299A60EF00CE7787 /* Views */,
 			);
@@ -242,6 +246,14 @@
 				F94EAA11299A63DE00CE7787 /* IncomeLineView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F94EAA14299A7A6A00CE7787 /* Total */ = {
+			isa = PBXGroup;
+			children = (
+				F94EAA15299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift */,
+			);
+			path = Total;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +426,7 @@
 				F9B702372849D72A001BCA66 /* KeyBoardView.swift in Sources */,
 				F93AC6DB285B25C20029F029 /* MembershipsViewModel.swift in Sources */,
 				F94EAA06299A5FFD00CE7787 /* IncomeListViewModel.swift in Sources */,
+				F94EAA16299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift in Sources */,
 				F9024AAA2837E0C50064862B /* Persistence.swift in Sources */,
 				F9024AA62837E0C50064862B /* MoneyTrackerApp.swift in Sources */,
 				F94EAA0C299A614F00CE7787 /* IncomeListView.swift in Sources */,
@@ -437,6 +450,7 @@
 				F90EF7B82845F20B00EDB593 /* HousingViewModel.swift in Sources */,
 				F90EF7BE2845F55300EDB593 /* TransportationViewModel.swift in Sources */,
 				F9024AA72837E0C50064862B /* MoneyTrackerApp.swift in Sources */,
+				F94EAA17299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift in Sources */,
 				F9B7023D284B7E08001BCA66 /* WelcomePage.swift in Sources */,
 				F90EF7D1284762EC00EDB593 /* InsuranceViewModel.swift in Sources */,
 				F9B702382849D72A001BCA66 /* KeyBoardView.swift in Sources */,
