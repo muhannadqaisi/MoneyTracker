@@ -19,9 +19,9 @@ class IncomeAndExpenseViewModel: ObservableObject{
     @Published var memberships: [MTMembership] = []
 
     var moc: NSManagedObjectContext
-    init(moc: NSManagedObjectContext)
+    init()
     {
-        self.moc = moc
+        self.moc = PersistenceController.shared.container.viewContext
         fetchData()
         NotificationCenter.default.addObserver(forName: .NSManagedObjectContextDidSave, object: nil, queue: nil) { note in
               self.fetchData()

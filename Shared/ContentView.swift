@@ -11,24 +11,8 @@ import CoreData
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: MTSavings.entity(), sortDescriptors: [])
-    var savings: FetchedResults<MTSavings>
-    @FetchRequest(entity: MTIncome.entity(), sortDescriptors: [])
-    var income: FetchedResults<MTIncome>
-    @FetchRequest(entity: MTHousing.entity(), sortDescriptors: [])
-    var housing: FetchedResults<MTHousing>
-    @FetchRequest(entity: MTPersonal.entity(), sortDescriptors: [])
-    var personal: FetchedResults<MTPersonal>
-    @FetchRequest(entity: MTTransportation.entity(), sortDescriptors: [])
-    var transportation: FetchedResults<MTTransportation>
-    @FetchRequest(entity: MTFood.entity(), sortDescriptors: [])
-    var food: FetchedResults<MTFood>
-    @FetchRequest(entity: MTInsurance.entity(), sortDescriptors: [])
-    var insurance: FetchedResults<MTInsurance>
-    @FetchRequest(entity: MTMembership.entity(), sortDescriptors: [])
-    var memberships: FetchedResults<MTMembership>
     @Environment(\.colorScheme) var colorScheme
-
+    @ObservedObject var viewModel: IncomeAndExpenseViewModel
     private static let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -94,7 +78,7 @@ struct ContentView: View {
                         
                     }
                     .sheet(isPresented: $showDetailedSheet) {
-                        OrderSheet()
+                        OrderSheet(viewModel: viewModel)
                     }
                 }
             toolBar: {
@@ -128,39 +112,6 @@ struct ContentView: View {
         
     }
     
-    func total() -> Int {
-        var totalToday: Int = 0
-        for item in income {
-            totalToday += item.amount!.intValue
-        }
-        return totalToday
-    }
-
-    func totalExpense() -> Int {
-        var totalToday: Int = 0
-        for item in savings {
-            totalToday += item.amount!.intValue
-        }
-        for item2 in housing {
-            totalToday += item2.amount!.intValue
-        }
-        for item3 in transportation {
-            totalToday += item3.amount!.intValue
-        }
-        for item4 in food {
-            totalToday += item4.amount!.intValue
-        }
-        for item5 in personal {
-            totalToday += item5.amount!.intValue
-        }
-        for item6 in insurance {
-            totalToday += item6.amount!.intValue
-        }
-        for item7 in memberships {
-            totalToday += item7.amount!.intValue
-        }
-        return totalToday
-    }
     
     func addEmptyLine()
     {
@@ -178,7 +129,6 @@ struct ContentView: View {
     @ViewBuilder
     func ExpenseCardView()-> some View
     {
-        let vm = IncomeAndExpenseViewModel(moc: viewContext)
         VStack {
             Spacer().frame(height:12)
             HStack{
@@ -191,7 +141,7 @@ struct ContentView: View {
                     Text("Monthly Income")
                         .font(.system(size: 18, weight: .light))
                         .padding()
-                    Text("$\(Int(vm.total()))")
+                    Text("$\(Int(viewModel.total()))")
                         .font(.system(size: 20, weight: .bold))
                         .lineLimit(1)
                         .multilineTextAlignment(.leading)
@@ -205,7 +155,7 @@ struct ContentView: View {
                         .font(.system(size: 18, weight: .light))
                         .padding()
                     
-                    Text("$\(Int(vm.totalExpense()))")
+                    Text("$\(Int(viewModel.totalExpense()))")
                         .font(.system(size: 20, weight: .bold))
                         .lineLimit(1)
                         .multilineTextAlignment(.leading)
@@ -217,8 +167,8 @@ struct ContentView: View {
     }
     func IncomeAndExpenseGraphView()-> some View {
         VStack {
-            if(total() != .zero){
-                PieChartView(values: [Double(total()), Double(totalExpense())], names: ["Total Income", "Total Expense"], formatter: {value in String(format: "$%.2f", value)}, colors: [Color(hue: 0.3, saturation: 0.70, brightness: 0.90), Color.red])
+            if(viewModel.total() != .zero){
+                PieChartView(values: [Double(viewModel.total()), Double(viewModel.totalExpense())], names: ["Total Income", "Total Expense"], formatter: {value in String(format: "$%.2f", value)}, colors: [Color(hue: 0.3, saturation: 0.70, brightness: 0.90), Color.red])
                 
             } else {
                 EmptyPieChartView(values: [1, 0], names: ["Total Income", "Other Income"], formatter: {value in String(format: "$%.2f", value)}, colors: [Color.gray, Color.gray])
@@ -229,12 +179,12 @@ struct ContentView: View {
     }
     func LeftToBudget()-> some View {
         HStack{
-            if (total() - totalExpense() >= 0) {
-                Text("$\(total() - totalExpense())")
+            if (viewModel.total() - viewModel.totalExpense() >= 0) {
+                Text("$\(viewModel.total() - viewModel.totalExpense())")
                     .font(.system(size: 20, weight: .regular))
                     .foregroundColor(Color(hue: 0.303, saturation: 0.83, brightness: 0.68))
             } else {
-                Text("$\(total() - totalExpense())")
+                Text("$\(viewModel.total() - viewModel.totalExpense())")
                     .font(.system(size: 20, weight: .regular))
                     .foregroundColor(Color.red)
             }
@@ -294,7 +244,8 @@ struct BlurredHeaderView: View {
 struct OrderSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment (\.presentationMode) var presentationMode
-    
+    @ObservedObject var viewModel = IncomeAndExpenseViewModel()
+
     @State var amount = 0.00
     @State var itemName = ""
     var body: some View {
@@ -305,11 +256,11 @@ struct OrderSheet: View {
         }
         Spacer().frame(height:40)
         VStack(alignment: .leading, spacing: 40) {
-            DetailedView(title: "Month", subTitle: 1, imageName: "1.circle", distance: 11)
+            DetailedView(title: "Month", subTitle: 1, imageName: "1.circle", distance: 11, viewModel: viewModel)
             Divider()
-            DetailedView(title: "Months", subTitle: 6, imageName: "6.circle", distance: 0)
+            DetailedView(title: "Months", subTitle: 6, imageName: "6.circle", distance: 0, viewModel: viewModel)
             Divider()
-            DetailedView(title: "Months", subTitle: 12, imageName: "12.circle", distance: 0)
+            DetailedView(title: "Months", subTitle: 12, imageName: "12.circle", distance: 0, viewModel: viewModel)
             
         }
         .padding(.horizontal)
@@ -323,24 +274,8 @@ struct DetailedView: View {
     var subTitle: Int = 0
     var imageName: String = ""
     var distance: Int = 0
-    
-    @FetchRequest(entity: MTSavings.entity(), sortDescriptors: [])
-    var savings: FetchedResults<MTSavings>
-    @FetchRequest(entity: MTIncome.entity(), sortDescriptors: [])
-    var income: FetchedResults<MTIncome>
-    @FetchRequest(entity: MTHousing.entity(), sortDescriptors: [])
-    var housing: FetchedResults<MTHousing>
-    @FetchRequest(entity: MTPersonal.entity(), sortDescriptors: [])
-    var personal: FetchedResults<MTPersonal>
-    @FetchRequest(entity: MTTransportation.entity(), sortDescriptors: [])
-    var transportation: FetchedResults<MTTransportation>
-    @FetchRequest(entity: MTFood.entity(), sortDescriptors: [])
-    var food: FetchedResults<MTFood>
-    @FetchRequest(entity: MTInsurance.entity(), sortDescriptors: [])
-    var insurance: FetchedResults<MTInsurance>
-    @FetchRequest(entity: MTMembership.entity(), sortDescriptors: [])
-    var memberships: FetchedResults<MTMembership>
-    
+    var viewModel = IncomeAndExpenseViewModel()
+
     var body: some View {
         HStack(alignment: .center, spacing: -12) {
             Image(systemName: imageName)
@@ -364,15 +299,15 @@ struct DetailedView: View {
             Spacer().frame(width:50)
             VStack(alignment: .leading) {
                 Spacer().frame(height:8)
-                Text("Income: $\(subTitle * total())")
+                Text("Income: $\(subTitle * viewModel.total())")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)
                     .foregroundColor(Color.green)
-                Text("Expenses: $\(subTitle * totalExpense())")
+                Text("Expenses: $\(subTitle * viewModel.totalExpense())")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)
                     .foregroundColor(Color.red)
-                Text("Saved: $\(subTitle * ((Int(total()) - Int(totalExpense()))))")
+                Text("Saved: $\(subTitle * ((Int(viewModel.total()) - Int(viewModel.totalExpense()))))")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)
                     .foregroundColor(Color.blue)
@@ -382,45 +317,6 @@ struct DetailedView: View {
         .padding(.top)
     }
     
-    func total() -> Int {
-        var totalToday: Int = 0
-        for item in income {
-            totalToday += item.amount!.intValue
-        }
-        return totalToday
-    }
-    
-    func totalExpense() -> Int {
-        var totalToday: Int = 0
-        for item in savings {
-            totalToday += item.amount!.intValue
-        }
-        for item2 in housing {
-            totalToday += item2.amount!.intValue
-        }
-        for item3 in transportation {
-            totalToday += item3.amount!.intValue
-        }
-        for item4 in food {
-            totalToday += item4.amount!.intValue
-        }
-        for item5 in personal {
-            totalToday += item5.amount!.intValue
-        }
-        for item6 in insurance {
-            totalToday += item6.amount!.intValue
-        }
-        for item7 in memberships {
-            totalToday += item7.amount!.intValue
-        }
-        return totalToday
-    }
 }
 
 
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}

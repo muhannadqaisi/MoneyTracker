@@ -30,8 +30,8 @@
             filePath = "Shared/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "ExpenseCardView()"
             landmarkType = "7">
          </BreakpointContent>
