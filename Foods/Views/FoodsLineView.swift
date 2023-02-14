@@ -1,14 +1,14 @@
 //
-//  IncomeLineView.swift
+//  FoodsLineView.swift
 //  MoneyTracker
 //
-//  Created by Muhannad Qaisi on 2/13/23.
+//  Created by Muhannad Qaisi on 2/14/23.
 //
 
 import SwiftUI
 
-struct IncomeLineView: View {
-    @StateObject var viewModel: IncomeLineViewModel
+struct FoodsLineView: View {
+    @StateObject var viewModel: FoodsLineViewModel
     @FocusState var isInputActive: Bool
     var body: some View {
             HStack {
@@ -34,4 +34,3 @@ struct IncomeLineView: View {
             }
     }
 }
-

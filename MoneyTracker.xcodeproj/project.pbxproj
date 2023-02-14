@@ -21,12 +21,6 @@
 		F9024AAB2837E0C50064862B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9024A7D2837E0C20064862B /* Persistence.swift */; };
 		F9024AAC2837E0C50064862B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9024A7E2837E0C40064862B /* Assets.xcassets */; };
 		F9024AAD2837E0C50064862B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9024A7E2837E0C40064862B /* Assets.xcassets */; };
-		F90EF7B42845F03900EDB593 /* SavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90EF7B32845F03900EDB593 /* SavingsViewModel.swift */; };
-		F90EF7B52845F03900EDB593 /* SavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90EF7B32845F03900EDB593 /* SavingsViewModel.swift */; };
-		F90EF7B72845F20B00EDB593 /* HousingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90EF7B62845F20B00EDB593 /* HousingViewModel.swift */; };
-		F90EF7B82845F20B00EDB593 /* HousingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90EF7B62845F20B00EDB593 /* HousingViewModel.swift */; };
-		F90EF7BA2845F34E00EDB593 /* FoodModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90EF7B92845F34E00EDB593 /* FoodModelView.swift */; };
-		F90EF7BB2845F34E00EDB593 /* FoodModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90EF7B92845F34E00EDB593 /* FoodModelView.swift */; };
 		F90EF7BD2845F55300EDB593 /* TransportationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90EF7BC2845F55300EDB593 /* TransportationViewModel.swift */; };
 		F90EF7BE2845F55300EDB593 /* TransportationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90EF7BC2845F55300EDB593 /* TransportationViewModel.swift */; };
 		F90EF7C02845F5C100EDB593 /* PersonalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90EF7BF2845F5C100EDB593 /* PersonalViewModel.swift */; };
@@ -46,6 +40,30 @@
 		F94EAA13299A63DE00CE7787 /* IncomeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA11299A63DE00CE7787 /* IncomeLineView.swift */; };
 		F94EAA16299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA15299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift */; };
 		F94EAA17299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA15299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift */; };
+		F94EAA1C299BB5D900CE7787 /* HousingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA1B299BB5D900CE7787 /* HousingListViewModel.swift */; };
+		F94EAA1D299BB5D900CE7787 /* HousingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA1B299BB5D900CE7787 /* HousingListViewModel.swift */; };
+		F94EAA1F299BB5EF00CE7787 /* HousingLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA1E299BB5EF00CE7787 /* HousingLineViewModel.swift */; };
+		F94EAA20299BB5EF00CE7787 /* HousingLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA1E299BB5EF00CE7787 /* HousingLineViewModel.swift */; };
+		F94EAA22299BB5FD00CE7787 /* HousingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA21299BB5FD00CE7787 /* HousingListView.swift */; };
+		F94EAA23299BB5FD00CE7787 /* HousingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA21299BB5FD00CE7787 /* HousingListView.swift */; };
+		F94EAA25299BB61100CE7787 /* HousingLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA24299BB61100CE7787 /* HousingLineView.swift */; };
+		F94EAA26299BB61100CE7787 /* HousingLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA24299BB61100CE7787 /* HousingLineView.swift */; };
+		F94EAA2B299BB94500CE7787 /* SavingsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA2A299BB94500CE7787 /* SavingsListViewModel.swift */; };
+		F94EAA2C299BB94500CE7787 /* SavingsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA2A299BB94500CE7787 /* SavingsListViewModel.swift */; };
+		F94EAA2E299BB94F00CE7787 /* SavingsLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA2D299BB94F00CE7787 /* SavingsLineViewModel.swift */; };
+		F94EAA2F299BB94F00CE7787 /* SavingsLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA2D299BB94F00CE7787 /* SavingsLineViewModel.swift */; };
+		F94EAA31299BB9D700CE7787 /* SavingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA30299BB9D700CE7787 /* SavingsListView.swift */; };
+		F94EAA32299BB9D700CE7787 /* SavingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA30299BB9D700CE7787 /* SavingsListView.swift */; };
+		F94EAA34299BB9E200CE7787 /* SavingsLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA33299BB9E200CE7787 /* SavingsLineView.swift */; };
+		F94EAA35299BB9E200CE7787 /* SavingsLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA33299BB9E200CE7787 /* SavingsLineView.swift */; };
+		F94EAA3A299BBB4D00CE7787 /* FoodsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA39299BBB4D00CE7787 /* FoodsListViewModel.swift */; };
+		F94EAA3B299BBB4D00CE7787 /* FoodsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA39299BBB4D00CE7787 /* FoodsListViewModel.swift */; };
+		F94EAA3D299BBB5C00CE7787 /* FoodsLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA3C299BBB5C00CE7787 /* FoodsLineViewModel.swift */; };
+		F94EAA3E299BBB5C00CE7787 /* FoodsLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA3C299BBB5C00CE7787 /* FoodsLineViewModel.swift */; };
+		F94EAA40299BBC3200CE7787 /* FoodsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA3F299BBC3200CE7787 /* FoodsListView.swift */; };
+		F94EAA41299BBC3200CE7787 /* FoodsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA3F299BBC3200CE7787 /* FoodsListView.swift */; };
+		F94EAA43299BBC3E00CE7787 /* FoodsLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA42299BBC3E00CE7787 /* FoodsLineView.swift */; };
+		F94EAA44299BBC3E00CE7787 /* FoodsLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA42299BBC3E00CE7787 /* FoodsLineView.swift */; };
 		F9B702372849D72A001BCA66 /* KeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B702362849D72A001BCA66 /* KeyBoardView.swift */; };
 		F9B702382849D72A001BCA66 /* KeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B702362849D72A001BCA66 /* KeyBoardView.swift */; };
 		F9B7023C284B7E08001BCA66 /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B7023B284B7E08001BCA66 /* WelcomePage.swift */; };
@@ -84,9 +102,6 @@
 		F9024A9C2837E0C50064862B /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9024AA02837E0C50064862B /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		F9024AA22837E0C50064862B /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
-		F90EF7B32845F03900EDB593 /* SavingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsViewModel.swift; sourceTree = "<group>"; };
-		F90EF7B62845F20B00EDB593 /* HousingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousingViewModel.swift; sourceTree = "<group>"; };
-		F90EF7B92845F34E00EDB593 /* FoodModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModelView.swift; sourceTree = "<group>"; };
 		F90EF7BC2845F55300EDB593 /* TransportationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationViewModel.swift; sourceTree = "<group>"; };
 		F90EF7BF2845F5C100EDB593 /* PersonalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewModel.swift; sourceTree = "<group>"; };
 		F90EF7CF284762EC00EDB593 /* InsuranceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsuranceViewModel.swift; sourceTree = "<group>"; };
@@ -97,6 +112,18 @@
 		F94EAA0E299A62BC00CE7787 /* IncomeLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeLineViewModel.swift; sourceTree = "<group>"; };
 		F94EAA11299A63DE00CE7787 /* IncomeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeLineView.swift; sourceTree = "<group>"; };
 		F94EAA15299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeAndExpenseViewModel.swift; sourceTree = "<group>"; };
+		F94EAA1B299BB5D900CE7787 /* HousingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousingListViewModel.swift; sourceTree = "<group>"; };
+		F94EAA1E299BB5EF00CE7787 /* HousingLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousingLineViewModel.swift; sourceTree = "<group>"; };
+		F94EAA21299BB5FD00CE7787 /* HousingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousingListView.swift; sourceTree = "<group>"; };
+		F94EAA24299BB61100CE7787 /* HousingLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousingLineView.swift; sourceTree = "<group>"; };
+		F94EAA2A299BB94500CE7787 /* SavingsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsListViewModel.swift; sourceTree = "<group>"; };
+		F94EAA2D299BB94F00CE7787 /* SavingsLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsLineViewModel.swift; sourceTree = "<group>"; };
+		F94EAA30299BB9D700CE7787 /* SavingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsListView.swift; sourceTree = "<group>"; };
+		F94EAA33299BB9E200CE7787 /* SavingsLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsLineView.swift; sourceTree = "<group>"; };
+		F94EAA39299BBB4D00CE7787 /* FoodsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsListViewModel.swift; sourceTree = "<group>"; };
+		F94EAA3C299BBB5C00CE7787 /* FoodsLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsLineViewModel.swift; sourceTree = "<group>"; };
+		F94EAA3F299BBC3200CE7787 /* FoodsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsListView.swift; sourceTree = "<group>"; };
+		F94EAA42299BBC3E00CE7787 /* FoodsLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsLineView.swift; sourceTree = "<group>"; };
 		F9B702362849D72A001BCA66 /* KeyBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardView.swift; sourceTree = "<group>"; };
 		F9B7023B284B7E08001BCA66 /* WelcomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,7 +163,11 @@
 		F9024A732837E0C20064862B = {
 			isa = PBXGroup;
 			children = (
+				F94EAA14299A7A6A00CE7787 /* Total */,
 				F94EAA08299A60DC00CE7787 /* Income */,
+				F94EAA18299BB59600CE7787 /* Housing */,
+				F94EAA27299BB86500CE7787 /* Savings */,
+				F94EAA36299BBB1900CE7787 /* Foods */,
 				F90EF7CE284762C400EDB593 /* ViewModels */,
 				F9024A782837E0C20064862B /* Shared */,
 				F94EAA022995718000CE7787 /* DonutChart */,
@@ -201,9 +232,6 @@
 		F90EF7CE284762C400EDB593 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F90EF7B32845F03900EDB593 /* SavingsViewModel.swift */,
-				F90EF7B62845F20B00EDB593 /* HousingViewModel.swift */,
-				F90EF7B92845F34E00EDB593 /* FoodModelView.swift */,
 				F90EF7BC2845F55300EDB593 /* TransportationViewModel.swift */,
 				F90EF7BF2845F5C100EDB593 /* PersonalViewModel.swift */,
 				F90EF7CF284762EC00EDB593 /* InsuranceViewModel.swift */,
@@ -223,7 +251,6 @@
 		F94EAA08299A60DC00CE7787 /* Income */ = {
 			isa = PBXGroup;
 			children = (
-				F94EAA14299A7A6A00CE7787 /* Total */,
 				F94EAA09299A60E900CE7787 /* ViewModel */,
 				F94EAA0A299A60EF00CE7787 /* Views */,
 			);
@@ -254,6 +281,87 @@
 				F94EAA15299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift */,
 			);
 			path = Total;
+			sourceTree = "<group>";
+		};
+		F94EAA18299BB59600CE7787 /* Housing */ = {
+			isa = PBXGroup;
+			children = (
+				F94EAA19299BB59D00CE7787 /* ViewModel */,
+				F94EAA1A299BB5A400CE7787 /* Views */,
+			);
+			path = Housing;
+			sourceTree = "<group>";
+		};
+		F94EAA19299BB59D00CE7787 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F94EAA1B299BB5D900CE7787 /* HousingListViewModel.swift */,
+				F94EAA1E299BB5EF00CE7787 /* HousingLineViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F94EAA1A299BB5A400CE7787 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F94EAA21299BB5FD00CE7787 /* HousingListView.swift */,
+				F94EAA24299BB61100CE7787 /* HousingLineView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F94EAA27299BB86500CE7787 /* Savings */ = {
+			isa = PBXGroup;
+			children = (
+				F94EAA28299BB87400CE7787 /* ViewModels */,
+				F94EAA29299BB87E00CE7787 /* Views */,
+			);
+			path = Savings;
+			sourceTree = "<group>";
+		};
+		F94EAA28299BB87400CE7787 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F94EAA2A299BB94500CE7787 /* SavingsListViewModel.swift */,
+				F94EAA2D299BB94F00CE7787 /* SavingsLineViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F94EAA29299BB87E00CE7787 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F94EAA30299BB9D700CE7787 /* SavingsListView.swift */,
+				F94EAA33299BB9E200CE7787 /* SavingsLineView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F94EAA36299BBB1900CE7787 /* Foods */ = {
+			isa = PBXGroup;
+			children = (
+				F94EAA37299BBB2500CE7787 /* ViewModels */,
+				F94EAA38299BBB2B00CE7787 /* Views */,
+			);
+			path = Foods;
+			sourceTree = "<group>";
+		};
+		F94EAA37299BBB2500CE7787 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F94EAA39299BBB4D00CE7787 /* FoodsListViewModel.swift */,
+				F94EAA3C299BBB5C00CE7787 /* FoodsLineViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F94EAA38299BBB2B00CE7787 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F94EAA3F299BBC3200CE7787 /* FoodsListView.swift */,
+				F94EAA42299BBC3E00CE7787 /* FoodsLineView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,24 +523,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				F90EF7BD2845F55300EDB593 /* TransportationViewModel.swift in Sources */,
+				F94EAA25299BB61100CE7787 /* HousingLineView.swift in Sources */,
 				F90EF7C02845F5C100EDB593 /* PersonalViewModel.swift in Sources */,
 				F94EAA12299A63DE00CE7787 /* IncomeLineView.swift in Sources */,
+				F94EAA31299BB9D700CE7787 /* SavingsListView.swift in Sources */,
 				F90EF7D0284762EC00EDB593 /* InsuranceViewModel.swift in Sources */,
-				F90EF7B72845F20B00EDB593 /* HousingViewModel.swift in Sources */,
 				F94EAA0F299A62BC00CE7787 /* IncomeLineViewModel.swift in Sources */,
-				F90EF7BA2845F34E00EDB593 /* FoodModelView.swift in Sources */,
 				F94EAA042995719500CE7787 /* PieChartView.swift in Sources */,
 				F9024AA42837E0C50064862B /* MoneyTracker.xcdatamodeld in Sources */,
 				F9B702372849D72A001BCA66 /* KeyBoardView.swift in Sources */,
+				F94EAA22299BB5FD00CE7787 /* HousingListView.swift in Sources */,
+				F94EAA40299BBC3200CE7787 /* FoodsListView.swift in Sources */,
+				F94EAA1C299BB5D900CE7787 /* HousingListViewModel.swift in Sources */,
+				F94EAA2E299BB94F00CE7787 /* SavingsLineViewModel.swift in Sources */,
+				F94EAA34299BB9E200CE7787 /* SavingsLineView.swift in Sources */,
 				F93AC6DB285B25C20029F029 /* MembershipsViewModel.swift in Sources */,
+				F94EAA3A299BBB4D00CE7787 /* FoodsListViewModel.swift in Sources */,
 				F94EAA06299A5FFD00CE7787 /* IncomeListViewModel.swift in Sources */,
+				F94EAA3D299BBB5C00CE7787 /* FoodsLineViewModel.swift in Sources */,
+				F94EAA43299BBC3E00CE7787 /* FoodsLineView.swift in Sources */,
 				F94EAA16299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift in Sources */,
 				F9024AAA2837E0C50064862B /* Persistence.swift in Sources */,
 				F9024AA62837E0C50064862B /* MoneyTrackerApp.swift in Sources */,
 				F94EAA0C299A614F00CE7787 /* IncomeListView.swift in Sources */,
 				F9B7023C284B7E08001BCA66 /* WelcomePage.swift in Sources */,
 				F9024AA82837E0C50064862B /* ContentView.swift in Sources */,
-				F90EF7B42845F03900EDB593 /* SavingsViewModel.swift in Sources */,
+				F94EAA1F299BB5EF00CE7787 /* HousingLineViewModel.swift in Sources */,
+				F94EAA2B299BB94500CE7787 /* SavingsListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,21 +557,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F94EAA2C299BB94500CE7787 /* SavingsListViewModel.swift in Sources */,
 				F9024AA52837E0C50064862B /* MoneyTracker.xcdatamodeld in Sources */,
+				F94EAA32299BB9D700CE7787 /* SavingsListView.swift in Sources */,
 				F94EAA0D299A614F00CE7787 /* IncomeListView.swift in Sources */,
+				F94EAA20299BB5EF00CE7787 /* HousingLineViewModel.swift in Sources */,
 				F9024AAB2837E0C50064862B /* Persistence.swift in Sources */,
 				F94EAA07299A5FFD00CE7787 /* IncomeListViewModel.swift in Sources */,
-				F90EF7BB2845F34E00EDB593 /* FoodModelView.swift in Sources */,
+				F94EAA1D299BB5D900CE7787 /* HousingListViewModel.swift in Sources */,
 				F93AC6DC285B25C20029F029 /* MembershipsViewModel.swift in Sources */,
 				F90EF7C12845F5C100EDB593 /* PersonalViewModel.swift in Sources */,
-				F90EF7B82845F20B00EDB593 /* HousingViewModel.swift in Sources */,
 				F90EF7BE2845F55300EDB593 /* TransportationViewModel.swift in Sources */,
 				F9024AA72837E0C50064862B /* MoneyTrackerApp.swift in Sources */,
 				F94EAA17299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift in Sources */,
 				F9B7023D284B7E08001BCA66 /* WelcomePage.swift in Sources */,
 				F90EF7D1284762EC00EDB593 /* InsuranceViewModel.swift in Sources */,
+				F94EAA44299BBC3E00CE7787 /* FoodsLineView.swift in Sources */,
 				F9B702382849D72A001BCA66 /* KeyBoardView.swift in Sources */,
-				F90EF7B52845F03900EDB593 /* SavingsViewModel.swift in Sources */,
+				F94EAA35299BB9E200CE7787 /* SavingsLineView.swift in Sources */,
+				F94EAA3E299BBB5C00CE7787 /* FoodsLineViewModel.swift in Sources */,
+				F94EAA41299BBC3200CE7787 /* FoodsListView.swift in Sources */,
+				F94EAA3B299BBB4D00CE7787 /* FoodsListViewModel.swift in Sources */,
+				F94EAA23299BB5FD00CE7787 /* HousingListView.swift in Sources */,
+				F94EAA26299BB61100CE7787 /* HousingLineView.swift in Sources */,
+				F94EAA2F299BB94F00CE7787 /* SavingsLineViewModel.swift in Sources */,
 				F94EAA13299A63DE00CE7787 /* IncomeLineView.swift in Sources */,
 				F9024AA92837E0C50064862B /* ContentView.swift in Sources */,
 				F94EAA10299A62BC00CE7787 /* IncomeLineViewModel.swift in Sources */,

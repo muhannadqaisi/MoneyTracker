@@ -38,15 +38,10 @@ struct ContentView: View {
                     List{
                         //IncomeAndExpenseGraphView()
                         IncomeListView(viewModel: IncomeListViewModel(moc: viewContext))
-                        Section(header: Text("Savings").font(.title3)) {
-                            LineSavingsView(viewModel: LineSavingsViewModel(moc:viewContext))
-                        }
-                        Section(header: Text("Housing").font(.title3)) {
-                            LineHousingsView(viewModel: LineHousingsViewModel(moc:viewContext))
-                        }
-                        Section(header: Text("Food").font(.title3)) {
-                            LineFoodsView(viewModel: LineFoodsViewModel(moc:viewContext))
-                        }
+                        HousingListView(viewModel: HousingListViewModel(moc: viewContext))
+                        SavingsListView(viewModel: SavingsListViewModel(moc: viewContext))
+                        FoodsListView(viewModel: FoodsListViewModel(moc: viewContext))
+
                         Section(header: Text("Transportation").font(.title3)) {
                             LineTransportationsView(viewModel: LineTransportationsViewModel(moc:viewContext))
                         }
@@ -130,7 +125,7 @@ struct ContentView: View {
     func ExpenseCardView()-> some View
     {
         VStack {
-            Spacer().frame(height:12)
+            Spacer().frame(height:5)
             HStack{
                 Text("Money Tracker")
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)

@@ -1,30 +1,30 @@
 //
-//  IncomeViewModel2.swift
+//  SavingsListViewModel.swift
 //  MoneyTracker
 //
-//  Created by Muhannad Qaisi on 2/13/23.
+//  Created by Muhannad Qaisi on 2/14/23.
 //
 
 import Foundation
-import SwiftUI
 import CoreData
+import SwiftUI
 
-class IncomeListViewModel: ObservableObject{
-    @Published var Incomes: [MTIncome] = []
+class SavingsListViewModel: ObservableObject{
+    @Published var savings: [MTSavings] = []
 
     var moc: NSManagedObjectContext
     init(moc: NSManagedObjectContext)
     {
         self.moc = moc
-        fetchIncome()
+        fetchSavings()
         NotificationCenter.default.addObserver(forName: .NSManagedObjectContextDidSave, object: nil, queue: nil) { note in
-              self.fetchIncome()
+              self.fetchSavings()
             }
     }
     
     func addEmptyLine()
     {
-        let expense = MTIncome(context: moc)
+        let expense = MTSavings(context: moc)
         expense.amount = .zero
         expense.name = ""
         do {
@@ -35,22 +35,22 @@ class IncomeListViewModel: ObservableObject{
         }
     }
     
-    func fetchIncome()
+    func fetchSavings()
     {
-        let rq = MTIncome.fetchRequest()
+        let rq = MTSavings.fetchRequest()
         do {
             
             let results = try self.moc.fetch(rq)
-            self.Incomes = results
+            self.savings = results
             
         } catch {
             debugPrint(error)
         }
     }
-    func deleteIncome(offset: IndexSet)
+    func deleteSavings(offset: IndexSet)
     {
         withAnimation{
-            offset.map{ self.Incomes[$0]} .forEach(self.moc.delete)
+            offset.map{ self.savings[$0]} .forEach(self.moc.delete)
             do {
                 try self.moc.save()
                 print("Saved")
@@ -60,9 +60,9 @@ class IncomeListViewModel: ObservableObject{
         }
     }
     
-    func addIncome(name: String, amount: Decimal)
+    func addSavings(name: String, amount: Decimal)
     {
-            let expense = MTIncome(context: self.moc)
+            let expense = MTSavings(context: self.moc)
             expense.amount = NSDecimalNumber(decimal: amount)
             expense.name = name
             do {
@@ -72,11 +72,10 @@ class IncomeListViewModel: ObservableObject{
                 print(error.localizedDescription)
             }
     }
-    func loadIncomeData() {
-        print(self.Incomes.count)
-        if self.Incomes.count == 0 {
-            addIncome(name: "Paycheck", amount: 0)
-            addIncome(name: "Paycheck", amount: 0)
+    func loadSavingsData() {
+        if self.savings.count == 0 {
+            addSavings(name: "Emergency Fund", amount: 0)
+            addSavings(name: "Other Savings", amount: 0)
       }
     }
     

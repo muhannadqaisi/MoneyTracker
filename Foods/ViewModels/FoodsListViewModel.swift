@@ -1,30 +1,30 @@
 //
-//  IncomeViewModel2.swift
+//  FoodsListViewModel.swift
 //  MoneyTracker
 //
-//  Created by Muhannad Qaisi on 2/13/23.
+//  Created by Muhannad Qaisi on 2/14/23.
 //
 
 import Foundation
-import SwiftUI
 import CoreData
+import SwiftUI
 
-class IncomeListViewModel: ObservableObject{
-    @Published var Incomes: [MTIncome] = []
+class FoodsListViewModel: ObservableObject{
+    @Published var foods: [MTFood] = []
 
     var moc: NSManagedObjectContext
     init(moc: NSManagedObjectContext)
     {
         self.moc = moc
-        fetchIncome()
+        fetchFoods()
         NotificationCenter.default.addObserver(forName: .NSManagedObjectContextDidSave, object: nil, queue: nil) { note in
-              self.fetchIncome()
+              self.fetchFoods()
             }
     }
     
     func addEmptyLine()
     {
-        let expense = MTIncome(context: moc)
+        let expense = MTFood(context: moc)
         expense.amount = .zero
         expense.name = ""
         do {
@@ -35,22 +35,22 @@ class IncomeListViewModel: ObservableObject{
         }
     }
     
-    func fetchIncome()
+    func fetchFoods()
     {
-        let rq = MTIncome.fetchRequest()
+        let rq = MTFood.fetchRequest()
         do {
             
             let results = try self.moc.fetch(rq)
-            self.Incomes = results
+            self.foods = results
             
         } catch {
             debugPrint(error)
         }
     }
-    func deleteIncome(offset: IndexSet)
+    func deleteFood(offset: IndexSet)
     {
         withAnimation{
-            offset.map{ self.Incomes[$0]} .forEach(self.moc.delete)
+            offset.map{ self.foods[$0]} .forEach(self.moc.delete)
             do {
                 try self.moc.save()
                 print("Saved")
@@ -60,9 +60,9 @@ class IncomeListViewModel: ObservableObject{
         }
     }
     
-    func addIncome(name: String, amount: Decimal)
+    func addFood(name: String, amount: Decimal)
     {
-            let expense = MTIncome(context: self.moc)
+            let expense = MTFood(context: self.moc)
             expense.amount = NSDecimalNumber(decimal: amount)
             expense.name = name
             do {
@@ -72,11 +72,11 @@ class IncomeListViewModel: ObservableObject{
                 print(error.localizedDescription)
             }
     }
-    func loadIncomeData() {
-        print(self.Incomes.count)
-        if self.Incomes.count == 0 {
-            addIncome(name: "Paycheck", amount: 0)
-            addIncome(name: "Paycheck", amount: 0)
+    func loadFoodData() {
+        if self.foods.count == 0 {
+            addFood(name: "Grocories", amount: 0)
+            addFood(name: "Restaurants", amount: 0)
+
       }
     }
     

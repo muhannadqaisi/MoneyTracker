@@ -10,12 +10,12 @@ import SwiftUI
 struct IncomeListView: View {
     @StateObject var viewModel: IncomeListViewModel
     var body: some View {
-        Section("Income"){
+        Section(header: Text("Income").font(.title3)){
             ForEach(viewModel.Incomes) { income in
                 let vm = IncomeLineViewModel(IncomesMO: income)
                 IncomeLineView(viewModel: vm)
             }
-            .onDelete(perform: viewModel.deleteExpense)
+            .onDelete(perform: viewModel.deleteIncome)
             HStack{
                 Button(action: {
                     viewModel.addEmptyLine()
@@ -30,7 +30,7 @@ struct IncomeListView: View {
             }
         }
         .onAppear{
-            viewModel.loadData()
+            viewModel.loadIncomeData()
         }
     }
     
