@@ -41,19 +41,10 @@ struct ContentView: View {
                         HousingListView(viewModel: HousingListViewModel(moc: viewContext))
                         SavingsListView(viewModel: SavingsListViewModel(moc: viewContext))
                         FoodsListView(viewModel: FoodsListViewModel(moc: viewContext))
-
-                        Section(header: Text("Transportation").font(.title3)) {
-                            LineTransportationsView(viewModel: LineTransportationsViewModel(moc:viewContext))
-                        }
-                        Section(header: Text("Insurance").font(.title3)) {
-                            LineInsurancesView(viewModel: LineInsurancesViewModel(moc:viewContext))
-                        }
-                        Section(header: Text("Personal").font(.title3)) {
-                            LinePersonalsView(viewModel: LinePersonalsViewModel(moc:viewContext))
-                        }
-                        Section(header: Text("Memberships").font(.title3)) {
-                            LineMembershipsView(viewModel: LineMembershipsViewModel(moc:viewContext))
-                        }
+                        TransportationListView(viewModel: TransportationListViewModel(moc: viewContext))
+                        PersonalListView(viewModel: PersonalListViewModel(moc: viewContext))
+                        InsuranceListView(viewModel: InsuranceListViewModel(moc:viewContext))
+                        MembershipsListView(viewModel: MembershipsListViewModel(moc:viewContext))
                         Button(role: .destructive) {
                             showingAlert = true
                         } label: {

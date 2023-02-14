@@ -1,5 +1,5 @@
 //
-//  SavingsListView.swift
+//  MembershipsListView.swift
 //  MoneyTracker
 //
 //  Created by Muhannad Qaisi on 2/14/23.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct SavingsListView: View {
-    @StateObject var viewModel: SavingsListViewModel
+struct MembershipsListView: View {
+    @StateObject var viewModel: MembershipsListViewModel
     var body: some View {
-        Section(header: Text("Savings").font(.title3)){
-            ForEach(viewModel.savings) { saving in
-                let vm = SavingsLineViewModel(savingsMO: saving)
-                SavingsLineView(viewModel: vm)
+        Section(header: Text("Memberships").font(.title3)){
+            ForEach(viewModel.memberships) { membership in
+                let vm = MembershipsLineViewModel(membershipsMO: membership)
+                MembershipsLineView(viewModel: vm)
             }
-            .onDelete(perform: viewModel.deleteSavings)
+            .onDelete(perform: viewModel.deleteMembership)
             HStack{
                 Button(action: {
                     viewModel.addEmptyLine()
@@ -25,12 +25,12 @@ struct SavingsListView: View {
                            .tint(Color.green)
 
                    })
-                Text("Add savings item")
+                Text("Add membership item")
                     .foregroundColor(Color.gray)
             }
         }
         .onAppear{
-            viewModel.loadSavingsData()
+            viewModel.loadMembershipsData()
         }
     }
     

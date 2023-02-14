@@ -1,5 +1,5 @@
 //
-//  FoodsListView.swift
+//  InsuranceListView.swift
 //  MoneyTracker
 //
 //  Created by Muhannad Qaisi on 2/14/23.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct FoodsListView: View {
-    @StateObject var viewModel: FoodsListViewModel
+struct InsuranceListView: View {
+    @StateObject var viewModel: InsuranceListViewModel
     var body: some View {
-        Section(header: Text("Food").font(.title3)){
-            ForEach(viewModel.foods) { food in
-                let vm = FoodsLineViewModel(foodsMO: food)
-                FoodsLineView(viewModel: vm)
+        Section(header: Text("Insurance").font(.title3)){
+            ForEach(viewModel.insurance) { Insurance in
+                let vm = InsuranceLineViewModel(InsuranceMO: Insurance)
+                InsuranceLineView(viewModel: vm)
             }
-            .onDelete(perform: viewModel.deleteFood)
+            .onDelete(perform: viewModel.deleteInsurance)
             HStack{
                 Button(action: {
                     viewModel.addEmptyLine()
@@ -25,12 +25,12 @@ struct FoodsListView: View {
                            .tint(Color.green)
 
                    })
-                Text("Add Foods item")
+                Text("Add insurance item")
                     .foregroundColor(Color.gray)
             }
         }
         .onAppear{
-            viewModel.loadFoodData()
+            viewModel.loadInsuranceData()
         }
     }
     
