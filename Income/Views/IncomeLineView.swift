@@ -27,11 +27,11 @@ struct IncomeLineView: View {
                     }
 
                     .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
+                    //.keyboardType(.numberPad)
             }
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
-                viewModel.save()
-            }
+//            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
+//                viewModel.save()
+//            }
     }
 }
 

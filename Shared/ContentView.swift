@@ -30,13 +30,10 @@ struct ContentView: View {
     
     var body: some View {
         if showWelcome || UserDefaults.standard.welcomeScreenShownPlay4 {
-            VStack {
                 ExpenseCardView()
                 Spacer().frame(height:12)
                 LeftToBudget()
-                KeyboardView {
-                    List{
-                        //IncomeAndExpenseGraphView()
+                    Form{
                         IncomeListView(viewModel: IncomeListViewModel(moc: viewContext))
                         HousingListView(viewModel: HousingListViewModel(moc: viewContext))
                         SavingsListView(viewModel: SavingsListViewModel(moc: viewContext))
@@ -66,26 +63,15 @@ struct ContentView: View {
                     .sheet(isPresented: $showDetailedSheet) {
                         OrderSheet(viewModel: viewModel)
                     }
-                }
-            toolBar: {
-                HStack {
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    Button {
+                    Button("Done") {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    } label: { Text("Submit") }
-                }.padding()
-            }
-                
+                    }
+                }
             }
             .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.5)))
-            .onAppear() {
-                UITableView.appearance().backgroundColor = UIColor.clear
-                UITableViewCell.appearance().backgroundColor = UIColor.clear
-            }
-            .frame(maxWidth: .infinity)
-            .background{
-                BlurredHeaderView()
-            }
             
         } else {
             WelcomeScreen(done: $showWelcome)
@@ -150,6 +136,9 @@ struct ContentView: View {
                 
             }
         }
+        .background{
+            BlurredHeaderView()
+        }
     }
     func IncomeAndExpenseGraphView()-> some View {
         VStack {
@@ -193,11 +182,11 @@ struct ContentView: View {
 struct BlurredHeaderView: View {
     var body: some View{
         ZStack{
-            VStack{
+            ZStack{
                 HStack{
                     Circle()
                         .fill(Color.green)
-                        .scaleEffect(1.1)
+                        .scaleEffect(1.2)
                         .offset(x:-120)
                         .offset(y:40)
                         .blur(radius: 120)
@@ -206,23 +195,12 @@ struct BlurredHeaderView: View {
                     Circle()
                         .fill(Color.red)
                         .scaleEffect(1.1)
-                        .offset(y:-290)
-                        .offset(x:200)
+                        .offset(x:120)
+                        .offset(y:40)
                         .blur(radius: 120)
                 }
-                
-                HStack{
-                    Circle()
-                        .fill(Color.gray)
-                        .scaleEffect(0.8)
-                        .offset(x:20)
-                        .offset(y:-129)
-                        .blur(radius: 120)
-                }
-                
             }
         }
-        .ignoresSafeArea()
     }
 }
 

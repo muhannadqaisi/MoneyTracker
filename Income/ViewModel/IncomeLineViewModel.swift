@@ -22,6 +22,9 @@ class IncomeLineViewModel: ObservableObject {
         if let amount = IncomesMO.amount{
             self.amount = amount as Decimal
         }
+        NotificationCenter.default.addObserver(forName: Notification.Name("Save"), object: self, queue: nil) { note in
+            self.save()
+        }
     }
     
     func save()
