@@ -26,40 +26,52 @@ struct ContentView: View {
     @State var showDetailedSheet = false
     @State private var showingAlert = false
     @State private var showWelcome: Bool = false
-    
+    @State var tabSelectedValue = 0
     
     var body: some View {
         if showWelcome || UserDefaults.standard.welcomeScreenShownPlay4 {
                 ExpenseCardView()
                 Spacer().frame(height:12)
                 LeftToBudget()
+                VStack {
+                    Picker(selection: $tabSelectedValue, label: Text("")) {
+                        Text("Money Tracker").tag(0)
+                        Text("Chart").tag(1)
+                        
+                    }.pickerStyle(SegmentedPickerStyle())
+                        .padding(.horizontal, 15)
+                }
                     Form{
-                        IncomeListView(viewModel: IncomeListViewModel(moc: viewContext))
-                        HousingListView(viewModel: HousingListViewModel(moc: viewContext))
-                        SavingsListView(viewModel: SavingsListViewModel(moc: viewContext))
-                        FoodsListView(viewModel: FoodsListViewModel(moc: viewContext))
-                        TransportationListView(viewModel: TransportationListViewModel(moc: viewContext))
-                        PersonalListView(viewModel: PersonalListViewModel(moc: viewContext))
-                        InsuranceListView(viewModel: InsuranceListViewModel(moc:viewContext))
-                        MembershipsListView(viewModel: MembershipsListViewModel(moc:viewContext))
-                        Button(role: .destructive) {
-                            showingAlert = true
-                        } label: {
-                            Label("Reset Data", systemImage: "trash")
-                        }
-                        .alert("Reset Data?", isPresented: $showingAlert) {
-                            Button("OK", role: .cancel) {
-                                self.didClickReset()
-                                do {
-                                    try viewContext.save()
-                                } catch {
-                                    print(error.localizedDescription)
+                        if self.tabSelectedValue == 1 {
+                            IncomeAndExpenseGraphView()
+                        } else {
+                            IncomeListView(viewModel: IncomeListViewModel(moc: viewContext))
+                            HousingListView(viewModel: HousingListViewModel(moc: viewContext))
+                            SavingsListView(viewModel: SavingsListViewModel(moc: viewContext))
+                            FoodsListView(viewModel: FoodsListViewModel(moc: viewContext))
+                            TransportationListView(viewModel: TransportationListViewModel(moc: viewContext))
+                            PersonalListView(viewModel: PersonalListViewModel(moc: viewContext))
+                            InsuranceListView(viewModel: InsuranceListViewModel(moc:viewContext))
+                            MembershipsListView(viewModel: MembershipsListViewModel(moc:viewContext))
+                            Button(role: .destructive) {
+                                showingAlert = true
+                            } label: {
+                                Label("Reset Data", systemImage: "trash")
+                            }
+                            .alert("Reset Data?", isPresented: $showingAlert) {
+                                Button("OK", role: .cancel) {
+                                    self.didClickReset()
+                                    do {
+                                        try viewContext.save()
+                                    } catch {
+                                        print(error.localizedDescription)
+                                    }
                                 }
                             }
+                            
+                            
                         }
-                        
-                        
-                    }
+                        }
                     .sheet(isPresented: $showDetailedSheet) {
                         OrderSheet(viewModel: viewModel)
                     }
@@ -186,7 +198,7 @@ struct BlurredHeaderView: View {
                 HStack{
                     Circle()
                         .fill(Color.green)
-                        .scaleEffect(1.2)
+                        .scaleEffect(1.5)
                         .offset(x:-120)
                         .offset(y:40)
                         .blur(radius: 120)
@@ -194,7 +206,7 @@ struct BlurredHeaderView: View {
                 HStack{
                     Circle()
                         .fill(Color.red)
-                        .scaleEffect(1.1)
+                        .scaleEffect(1.5)
                         .offset(x:120)
                         .offset(y:40)
                         .blur(radius: 120)
