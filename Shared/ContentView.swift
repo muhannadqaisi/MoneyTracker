@@ -30,51 +30,51 @@ struct ContentView: View {
     
     var body: some View {
         if showWelcome || UserDefaults.standard.welcomeScreenShownPlay4 {
-                ExpenseCardView()
-                Spacer().frame(height:12)
-                LeftToBudget()
-                VStack {
-                    Picker(selection: $tabSelectedValue, label: Text("")) {
-                        Text("Money Tracker").tag(0)
-                        Text("Chart").tag(1)
-                        
-                    }.pickerStyle(SegmentedPickerStyle())
-                        .padding(.horizontal, 15)
-                }
-                    Form{
-                        if self.tabSelectedValue == 1 {
-                            IncomeAndExpenseGraphView()
-                        } else {
-                            IncomeListView(viewModel: IncomeListViewModel(moc: viewContext))
-                            HousingListView(viewModel: HousingListViewModel(moc: viewContext))
-                            SavingsListView(viewModel: SavingsListViewModel(moc: viewContext))
-                            FoodsListView(viewModel: FoodsListViewModel(moc: viewContext))
-                            TransportationListView(viewModel: TransportationListViewModel(moc: viewContext))
-                            PersonalListView(viewModel: PersonalListViewModel(moc: viewContext))
-                            InsuranceListView(viewModel: InsuranceListViewModel(moc:viewContext))
-                            MembershipsListView(viewModel: MembershipsListViewModel(moc:viewContext))
-                            Button(role: .destructive) {
-                                showingAlert = true
-                            } label: {
-                                Label("Reset Data", systemImage: "trash")
-                            }
-                            .alert("Reset Data?", isPresented: $showingAlert) {
-                                Button("OK", role: .cancel) {
-                                    self.didClickReset()
-                                    do {
-                                        try viewContext.save()
-                                    } catch {
-                                        print(error.localizedDescription)
-                                    }
-                                }
-                            }
-                            
-                            
-                        }
-                        }
-                    .sheet(isPresented: $showDetailedSheet) {
-                        OrderSheet(viewModel: viewModel)
+            ExpenseCardView()
+            Spacer().frame(height:12)
+            LeftToBudget()
+            VStack {
+                Picker(selection: $tabSelectedValue, label: Text("")) {
+                    Text("Income & Expense").tag(0)
+                    Image(systemName: "chart.pie.fill").tag(1)
+                    
+                }.pickerStyle(SegmentedPickerStyle())
+                    .padding(.horizontal, 15)
+            }
+            Form{
+                if self.tabSelectedValue == 1 {
+                    IncomeAndExpenseGraphView()
+                } else {
+                    IncomeListView(viewModel: IncomeListViewModel(moc: viewContext))
+                    HousingListView(viewModel: HousingListViewModel(moc: viewContext))
+                    SavingsListView(viewModel: SavingsListViewModel(moc: viewContext))
+                    FoodsListView(viewModel: FoodsListViewModel(moc: viewContext))
+                    TransportationListView(viewModel: TransportationListViewModel(moc: viewContext))
+                    PersonalListView(viewModel: PersonalListViewModel(moc: viewContext))
+                    InsuranceListView(viewModel: InsuranceListViewModel(moc:viewContext))
+                    MembershipsListView(viewModel: MembershipsListViewModel(moc:viewContext))
+                    Button(role: .destructive) {
+                        showingAlert = true
+                    } label: {
+                        Label("Reset Data", systemImage: "trash")
                     }
+                    .alert("Reset Data?", isPresented: $showingAlert) {
+                        Button("OK", role: .cancel) {
+                            self.didClickReset()
+                            do {
+                                try viewContext.save()
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                    
+                    
+                }
+            }
+            .sheet(isPresented: $showDetailedSheet) {
+                OrderSheet(viewModel: viewModel)
+            }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
@@ -160,7 +160,7 @@ struct ContentView: View {
             } else {
                 EmptyPieChartView(values: [1, 0], names: ["Total Income", "Other Income"], formatter: {value in String(format: "$%.2f", value)}, colors: [Color.gray, Color.gray])
             }
-
+            
         }
         
     }
@@ -221,7 +221,7 @@ struct OrderSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment (\.presentationMode) var presentationMode
     @ObservedObject var viewModel = IncomeAndExpenseViewModel()
-
+    
     @State var amount = 0.00
     @State var itemName = ""
     var body: some View {
@@ -251,7 +251,7 @@ struct DetailedView: View {
     var imageName: String = ""
     var distance: Int = 0
     var viewModel = IncomeAndExpenseViewModel()
-
+    
     var body: some View {
         HStack(alignment: .center, spacing: -12) {
             Image(systemName: imageName)
