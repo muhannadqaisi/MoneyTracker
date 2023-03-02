@@ -89,7 +89,7 @@ struct InformationContainerView: View {
         VStack(alignment: .leading) {
             InformationDetailView(title: "Track", subTitle: "Money Tracker lets you know exactly how much you spend throughout the month using two categories; income and expenses.", imageName: "minus.slash.plus")
 
-            InformationDetailView(title: "Save Money", subTitle: "After filling up your income and expenses you can see exactly how much you have left to budget so you can save money smarter.", imageName: "checkmark.square")
+            InformationDetailView(title: "Save Money", subTitle: "After adding all your income and expenses items you can see exactly how much you have left to budget so you can save money smarter.", imageName: "checkmark.square")
             
             InformationDetailView(title: "Simple", subTitle: "Money tracker let's you add and edit items on the go so you can see all your expenses in one place.", imageName: "eye.square")
 
