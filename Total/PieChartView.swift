@@ -43,7 +43,7 @@ public struct PieChartView: View {
         return tempSlices
     }
     
-    public init(values:[Double], names: [String], formatter: @escaping (Double) -> String, colors: [Color] , backgroundColor: Color = Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0), widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.70){
+    public init(values:[Double], names: [String], formatter: @escaping (Double) -> String, colors: [Color] , backgroundColor: Color = Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0), widthFraction: CGFloat = 0.70, innerRadiusFraction: CGFloat = 0.65){
 
         self.values = values
         self.names = names

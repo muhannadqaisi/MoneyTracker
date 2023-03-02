@@ -36,7 +36,7 @@ struct ContentView: View {
             VStack {
                 Picker(selection: $tabSelectedValue, label: Text("")) {
                     Text("Income & Expense").tag(0)
-                    Image(systemName: "chart.pie.fill").tag(1)
+                    Image(systemName: "chart.pie").tag(1)
                     
                 }.pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal, 15)
