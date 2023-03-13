@@ -10,7 +10,7 @@ import SwiftUI
 struct SavingsListView: View {
     @StateObject var viewModel: SavingsListViewModel
     var body: some View {
-        Section(header: Text("Savings").font(.title3)){
+        Section(header: Text("Savings").font(.title3).foregroundColor(Color("Red"))){
             ForEach(viewModel.savings) { saving in
                 let vm = SavingsLineViewModel(savingsMO: saving)
                 SavingsLineView(viewModel: vm)
@@ -22,7 +22,7 @@ struct SavingsListView: View {
                    }, label: {
                        Image(systemName: "plus.circle")
                            .imageScale(.medium)
-                           .tint(Color.green)
+                           .tint(Color("Red"))
 
                    })
                 Text("Add saving item")

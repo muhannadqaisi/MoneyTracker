@@ -10,7 +10,7 @@ import SwiftUI
 struct TransportationListView: View {
     @StateObject var viewModel: TransportationListViewModel
     var body: some View {
-        Section(header: Text("Transportation").font(.title3)){
+        Section(header: Text("Transportation").font(.title3).foregroundColor(Color("Red"))){
             ForEach(viewModel.transportation) { transportation in
                 let vm = TransportationLineViewModel(transportationMO: transportation)
                 TransportationLineView(viewModel: vm)
@@ -22,7 +22,7 @@ struct TransportationListView: View {
                    }, label: {
                        Image(systemName: "plus.circle")
                            .imageScale(.medium)
-                           .tint(Color.green)
+                           .tint(Color("Red"))
 
                    })
                 Text("Add Transportation item")

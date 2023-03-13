@@ -27,24 +27,19 @@ struct ContentView: View {
     @State private var showingAlert = false
     @State private var showWelcome: Bool = false
     @State var tabSelectedValue = 0
+    @State var showViews: [Bool] = Array(repeating: false, count: 5)
     
     var body: some View {
         if showWelcome || UserDefaults.standard.welcomeScreenShownPlay4 {
-            ExpenseCardView()
-            Spacer().frame(height:12)
-            LeftToBudget()
-            VStack {
-                Picker(selection: $tabSelectedValue, label: Text("")) {
-                    Text("Income & Expense").tag(0)
-                    Image(systemName: "chart.pie").tag(1)
-                    
-                }.pickerStyle(SegmentedPickerStyle())
-                    .padding(.horizontal, 15)
-            }
-            Form{
-                if self.tabSelectedValue == 1 {
-                    IncomeAndExpenseGraphView()
-                } else {
+            VStack{
+                //ExpenseCardView()
+                RingCardView(viewModel: viewModel)
+                    .opacity(showViews[0] ? 1 : 0)
+                    .offset(y: showViews[0] ? 0 : 200)
+                LeftToBudget()
+                    .opacity(showViews[1] ? 1 : 0)
+                    .offset(y: showViews[1] ? 0 : 250)
+                Form{
                     IncomeListView(viewModel: IncomeListViewModel(moc: viewContext))
                     HousingListView(viewModel: HousingListViewModel(moc: viewContext))
                     SavingsListView(viewModel: SavingsListViewModel(moc: viewContext))
@@ -53,42 +48,84 @@ struct ContentView: View {
                     PersonalListView(viewModel: PersonalListViewModel(moc: viewContext))
                     InsuranceListView(viewModel: InsuranceListViewModel(moc:viewContext))
                     MembershipsListView(viewModel: MembershipsListViewModel(moc:viewContext))
-                    Button(role: .destructive) {
-                        showingAlert = true
-                    } label: {
-                        Label("Reset Data", systemImage: "trash")
-                    }
-                    .alert("Reset Data?", isPresented: $showingAlert) {
-                        Button("OK", role: .cancel) {
-                            self.didClickReset()
-                            do {
-                                try viewContext.save()
-                            } catch {
-                                print(error.localizedDescription)
+                    Section("Reset Data?"){
+                        Button(role: .destructive) {
+                            showingAlert = true
+                        } label: {
+                            Label("Reset Data", systemImage: "trash")
+                        }
+                        .alert("Reset Data?", isPresented: $showingAlert) {
+                            Button("OK", role: .cancel) {
+                                self.didClickReset()
+                                do {
+                                    try viewContext.save()
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
                             }
                         }
                     }
-                    
-                    
                 }
-            }
-            .sheet(isPresented: $showDetailedSheet) {
-                OrderSheet(viewModel: viewModel)
-            }
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("Done") {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                .opacity(showViews[2] ? 1 : 0)
+                .offset(y: showViews[2] ? 0 : 200)
+                
+                .sheet(isPresented: $showDetailedSheet) {
+                    OrderSheet(viewModel: viewModel)
+                }
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        }
                     }
                 }
+                .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.5)))
+                
             }
-            .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.5)))
-            
+            .onAppear(perform: animateViews)
+            .background{
+                ZStack{
+                    VStack{
+                        if (viewModel.total() > viewModel.totalExpense()){
+                            Circle()
+                                .fill(Color("Green"))
+                                .scaleEffect(0.6)
+                                .offset(x: 20)
+                                .blur(radius: 120)
+                            
+                        } else {
+                            Circle()
+                                .fill(Color("Red"))
+                                .scaleEffect(0.6,anchor: .leading)
+                                .offset(y: -20)
+                                .blur(radius: 120)
+                        }
+                    }
+                    
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                }
+                .ignoresSafeArea()
+            }
         } else {
             WelcomeScreen(done: $showWelcome)
         }
         
+    }
+    
+    func animateViews(){
+        withAnimation(.easeInOut){
+            showViews[0] = true
+        }
+        
+        withAnimation(.easeInOut.delay(0.1)){
+            showViews[1] = true
+        }
+        
+        withAnimation(.easeInOut.delay(0.15)){
+            showViews[2] = true
+        }
     }
     
     private func didClickReset() {
@@ -152,18 +189,7 @@ struct ContentView: View {
             BlurredHeaderView()
         }
     }
-    func IncomeAndExpenseGraphView()-> some View {
-        VStack {
-            if(viewModel.total() != .zero){
-                PieChartView(values: [Double(viewModel.total()), Double(viewModel.totalExpense())], names: ["Total Income", "Total Expense"], formatter: {value in String(format: "$%.2f", value)}, colors: [Color(hue: 0.3, saturation: 0.70, brightness: 0.90), Color.red])
-                
-            } else {
-                EmptyPieChartView(values: [1, 0], names: ["Total Income", "Other Income"], formatter: {value in String(format: "$%.2f", value)}, colors: [Color.gray, Color.gray])
-            }
-            
-        }
-        
-    }
+    
     func LeftToBudget()-> some View {
         HStack{
             if (viewModel.total() - viewModel.totalExpense() >= 0) {
@@ -197,16 +223,16 @@ struct BlurredHeaderView: View {
             ZStack{
                 HStack{
                     Circle()
-                        .fill(Color.green)
-                        .scaleEffect(1.5)
+                        .fill(Color("Green"))
+                        .scaleEffect(1.0)
                         .offset(x:-120)
                         .offset(y:40)
                         .blur(radius: 120)
                 }
                 HStack{
                     Circle()
-                        .fill(Color.red)
-                        .scaleEffect(1.5)
+                        .fill(Color("Red"))
+                        .scaleEffect(1.0)
                         .offset(x:120)
                         .offset(y:40)
                         .blur(radius: 120)
@@ -256,7 +282,6 @@ struct DetailedView: View {
         HStack(alignment: .center, spacing: -12) {
             Image(systemName: imageName)
                 .font(.system(size: 25, weight: .regular))
-                .foregroundColor(.black)
                 .padding()
                 .accessibility(hidden: true)
             
@@ -278,11 +303,11 @@ struct DetailedView: View {
                 Text("Income: \(subTitle * viewModel.total(), format: .currency(code: "USD"))")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)
-                    .foregroundColor(Color.green)
+                    .foregroundColor(Color("Green"))
                 Text("Expenses: \(subTitle * viewModel.totalExpense(), format: .currency(code: "USD"))")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)
-                    .foregroundColor(Color.red)
+                    .foregroundColor(Color("Red"))
                 Text("Saved: \(subTitle * (viewModel.total() - viewModel.totalExpense()), format: .currency(code: "USD"))")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)

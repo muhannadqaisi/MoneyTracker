@@ -10,7 +10,7 @@ import SwiftUI
 struct HousingListView: View {
     @StateObject var viewModel: HousingListViewModel
     var body: some View {
-        Section(header: Text("Housing").font(.title3)){
+        Section(header: Text("Housing").font(.title3).foregroundColor(Color("Red"))){
             ForEach(viewModel.housings) { housing in
                 let vm = HousingLineViewModel(housingMO: housing)
                 HousingLineView(viewModel: vm)
@@ -22,7 +22,7 @@ struct HousingListView: View {
                    }, label: {
                        Image(systemName: "plus.circle")
                            .imageScale(.medium)
-                           .tint(Color.green)
+                           .tint(Color("Red"))
 
                    })
                 Text("Add housing item")

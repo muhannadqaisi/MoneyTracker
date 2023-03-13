@@ -10,7 +10,7 @@ import SwiftUI
 struct FoodsListView: View {
     @StateObject var viewModel: FoodsListViewModel
     var body: some View {
-        Section(header: Text("Food").font(.title3)){
+        Section(header: Text("Food").font(.title3).foregroundColor(Color("Red"))){
             ForEach(viewModel.foods) { food in
                 let vm = FoodsLineViewModel(foodsMO: food)
                 FoodsLineView(viewModel: vm)
@@ -22,7 +22,7 @@ struct FoodsListView: View {
                    }, label: {
                        Image(systemName: "plus.circle")
                            .imageScale(.medium)
-                           .tint(Color.green)
+                           .tint(Color("Red"))
 
                    })
                 Text("Add food item")

@@ -89,6 +89,8 @@
 		F94EAA7F299BD46000CE7787 /* MembershipsLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA7E299BD46000CE7787 /* MembershipsLineView.swift */; };
 		F94EAA80299BD46000CE7787 /* MembershipsLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA7E299BD46000CE7787 /* MembershipsLineView.swift */; };
 		F94EAA81299BD4DE00CE7787 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA032995719500CE7787 /* PieChartView.swift */; };
+		F95F2B2929BB1C910086F37E /* RingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95F2B2829BB1C910086F37E /* RingCardView.swift */; };
+		F95F2B2A29BB1C910086F37E /* RingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95F2B2829BB1C910086F37E /* RingCardView.swift */; };
 		F9B702372849D72A001BCA66 /* KeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B702362849D72A001BCA66 /* KeyBoardView.swift */; };
 		F9B702382849D72A001BCA66 /* KeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B702362849D72A001BCA66 /* KeyBoardView.swift */; };
 		F9B7023C284B7E08001BCA66 /* WelcomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B7023B284B7E08001BCA66 /* WelcomePage.swift */; };
@@ -161,6 +163,7 @@
 		F94EAA78299BD37100CE7787 /* MembershipsLineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipsLineViewModel.swift; sourceTree = "<group>"; };
 		F94EAA7B299BD45400CE7787 /* MembershipsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipsListView.swift; sourceTree = "<group>"; };
 		F94EAA7E299BD46000CE7787 /* MembershipsLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipsLineView.swift; sourceTree = "<group>"; };
+		F95F2B2829BB1C910086F37E /* RingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingCardView.swift; sourceTree = "<group>"; };
 		F9B702362849D72A001BCA66 /* KeyBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardView.swift; sourceTree = "<group>"; };
 		F9B7023B284B7E08001BCA66 /* WelcomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -294,6 +297,7 @@
 			children = (
 				F94EAA032995719500CE7787 /* PieChartView.swift */,
 				F94EAA15299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift */,
+				F95F2B2829BB1C910086F37E /* RingCardView.swift */,
 			);
 			path = Total;
 			sourceTree = "<group>";
@@ -685,6 +689,7 @@
 				F94EAA3D299BBB5C00CE7787 /* FoodsLineViewModel.swift in Sources */,
 				F94EAA6D299BD15000CE7787 /* InsuranceListView.swift in Sources */,
 				F94EAA76299BD36400CE7787 /* MembershipsListViewModel.swift in Sources */,
+				F95F2B2929BB1C910086F37E /* RingCardView.swift in Sources */,
 				F94EAA58299BCE6900CE7787 /* PersonalListViewModel.swift in Sources */,
 				F94EAA43299BBC3E00CE7787 /* FoodsLineView.swift in Sources */,
 				F94EAA16299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift in Sources */,
@@ -732,6 +737,7 @@
 				F94EAA50299BCB6D00CE7787 /* TransportationListView.swift in Sources */,
 				F94EAA44299BBC3E00CE7787 /* FoodsLineView.swift in Sources */,
 				F94EAA4A299BCB5900CE7787 /* TransportationListViewModel.swift in Sources */,
+				F95F2B2A29BB1C910086F37E /* RingCardView.swift in Sources */,
 				F9B702382849D72A001BCA66 /* KeyBoardView.swift in Sources */,
 				F94EAA35299BB9E200CE7787 /* SavingsLineView.swift in Sources */,
 				F94EAA59299BCE6900CE7787 /* PersonalListViewModel.swift in Sources */,

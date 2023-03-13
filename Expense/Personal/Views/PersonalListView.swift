@@ -10,7 +10,7 @@ import SwiftUI
 struct PersonalListView: View {
     @StateObject var viewModel: PersonalListViewModel
     var body: some View {
-        Section(header: Text("Personal").font(.title3)){
+        Section(header: Text("Personal").font(.title3).foregroundColor(Color("Red"))){
             ForEach(viewModel.personal) { personal in
                 let vm = PersonalLineViewModel(personalMO: personal)
                 PersonalLineView(viewModel: vm)
@@ -22,7 +22,7 @@ struct PersonalListView: View {
                    }, label: {
                        Image(systemName: "plus.circle")
                            .imageScale(.medium)
-                           .tint(Color.green)
+                           .tint(Color("Red"))
 
                    })
                 Text("Add Transportation item")

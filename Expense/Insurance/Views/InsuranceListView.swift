@@ -10,7 +10,7 @@ import SwiftUI
 struct InsuranceListView: View {
     @StateObject var viewModel: InsuranceListViewModel
     var body: some View {
-        Section(header: Text("Insurance").font(.title3)){
+        Section(header: Text("Insurance").font(.title3).foregroundColor(Color("Red"))){
             ForEach(viewModel.insurance) { Insurance in
                 let vm = InsuranceLineViewModel(InsuranceMO: Insurance)
                 InsuranceLineView(viewModel: vm)
@@ -22,7 +22,7 @@ struct InsuranceListView: View {
                    }, label: {
                        Image(systemName: "plus.circle")
                            .imageScale(.medium)
-                           .tint(Color.green)
+                           .tint(Color("Red"))
 
                    })
                 Text("Add insurance item")

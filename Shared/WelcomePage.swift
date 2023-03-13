@@ -134,5 +134,5 @@ extension View {
 }
 
 extension Color {
-    static var mainColor = Color(UIColor.systemGreen)
+    static var mainColor = Color("Green")
 }
