@@ -29,13 +29,13 @@ struct RingCardView: View {
             Ring(progress: (CGFloat(viewModel.totalExpense())/CGFloat(viewModel.total()) ) * 100, value: "Expense", keyIcon: "flame.fill", keyColor: Color("Red") , totalValue: Double(viewModel.totalExpense()))
         ]
         
-        VStack(spacing: 8){
+        VStack(spacing: 6){
             Text("Money Tracker")
                 .fontWeight(.semibold)
                 .font(.title2)
                 .frame(maxWidth: .infinity,alignment: .leading)
             
-            HStack(spacing: 20){
+            HStack(spacing: 15){
                 
                 // Progress Ring
                 ZStack{
@@ -43,7 +43,7 @@ struct RingCardView: View {
                         AnimatedRingView(ring: rings2[index], index: index, ringsArray: rings2)
                     }
                 }
-                .frame(width: 100, height: 100)
+                .frame(width: 90, height: 90)
                 
                 VStack(alignment: .leading, spacing: 12) {
                     ForEach(rings2){ring in

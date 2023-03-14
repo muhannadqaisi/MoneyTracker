@@ -32,14 +32,13 @@ struct ContentView: View {
     var body: some View {
         if showWelcome || UserDefaults.standard.welcomeScreenShownPlay4 {
             VStack{
-                //ExpenseCardView()
                 RingCardView(viewModel: viewModel)
                     .opacity(showViews[0] ? 1 : 0)
                     .offset(y: showViews[0] ? 0 : 200)
                 LeftToBudget()
                     .opacity(showViews[1] ? 1 : 0)
                     .offset(y: showViews[1] ? 0 : 250)
-                Form{
+                List{
                     IncomeListView(viewModel: IncomeListViewModel(moc: viewContext))
                     HousingListView(viewModel: HousingListViewModel(moc: viewContext))
                     SavingsListView(viewModel: SavingsListViewModel(moc: viewContext))
@@ -66,6 +65,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                Spacer(minLength: 0.2)
                 .opacity(showViews[2] ? 1 : 0)
                 .offset(y: showViews[2] ? 0 : 200)
                 
@@ -80,7 +80,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.5)))
+                .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.2)))
                 
             }
             .onAppear(perform: animateViews)
@@ -194,15 +194,15 @@ struct ContentView: View {
         HStack{
             if (viewModel.total() - viewModel.totalExpense() >= 0) {
                 Text(viewModel.total() - viewModel.totalExpense(), format: .currency(code: "USD"))
-                    .font(.system(size: 20, weight: .regular))
-                    .foregroundColor(Color(hue: 0.303, saturation: 0.83, brightness: 0.68))
+                    .font(.system(size: 18, weight: .regular))
+                    .foregroundColor(Color("Green"))
             } else {
                 Text(viewModel.total() - viewModel.totalExpense(), format: .currency(code: "USD"))
-                    .font(.system(size: 20, weight: .regular))
-                    .foregroundColor(Color.red)
+                    .font(.system(size: 18, weight: .regular))
+                    .foregroundColor(Color("Red"))
             }
             Text("left to budget")
-                .font(.system(size: 20, weight: .light))
+                .font(.system(size: 18, weight: .light))
             Button(action: {
                 showDetailedSheet = true
             }, label: {
