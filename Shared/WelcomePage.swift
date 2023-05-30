@@ -134,5 +134,5 @@ extension View {
 }
 
 extension Color {
-    static var mainColor = Color("Green")
+    static var mainColor = Color.green
 }

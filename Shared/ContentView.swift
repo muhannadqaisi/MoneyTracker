@@ -89,7 +89,7 @@ struct ContentView: View {
                     VStack{
                         if (viewModel.total() > viewModel.totalExpense()){
                             Circle()
-                                .fill(Color("Green"))
+                                .fill(Color.green)
                                 .scaleEffect(0.6)
                                 .offset(x: 20)
                                 .blur(radius: 120)
@@ -195,7 +195,7 @@ struct ContentView: View {
             if (viewModel.total() - viewModel.totalExpense() >= 0) {
                 Text(viewModel.total() - viewModel.totalExpense(), format: .currency(code: "USD"))
                     .font(.system(size: 18, weight: .regular))
-                    .foregroundColor(Color("Green"))
+                    .foregroundColor(Color.blue)
             } else {
                 Text(viewModel.total() - viewModel.totalExpense(), format: .currency(code: "USD"))
                     .font(.system(size: 18, weight: .regular))
@@ -223,7 +223,7 @@ struct BlurredHeaderView: View {
             ZStack{
                 HStack{
                     Circle()
-                        .fill(Color("Green"))
+                        .fill(Color.green)
                         .scaleEffect(1.0)
                         .offset(x:-120)
                         .offset(y:40)
@@ -303,7 +303,7 @@ struct DetailedView: View {
                 Text("Income: \(subTitle * viewModel.total(), format: .currency(code: "USD"))")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)
-                    .foregroundColor(Color("Green"))
+                    .foregroundColor(Color.green)
                 Text("Expenses: \(subTitle * viewModel.totalExpense(), format: .currency(code: "USD"))")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)

@@ -10,7 +10,7 @@ import SwiftUI
 struct IncomeListView: View {
     @StateObject var viewModel: IncomeListViewModel
     var body: some View {
-        Section(header: Text("Income").font(.title3).foregroundColor(Color("Green"))){
+        Section(header: Text("Income").font(.title3).foregroundColor(Color.green)){
             ForEach(viewModel.Incomes) { income in
                 let vm = IncomeLineViewModel(IncomesMO: income)
                 IncomeLineView(viewModel: vm)
@@ -22,7 +22,7 @@ struct IncomeListView: View {
                    }, label: {
                        Image(systemName: "plus.circle")
                            .imageScale(.medium)
-                           .tint(Color("Green"))
+                           .tint(Color.green)
 
                    })
                 Text("Add incomes item")

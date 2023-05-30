@@ -25,7 +25,7 @@ struct RingCardView: View {
         
         let rings2: [Ring] = [
             
-            Ring(progress: (CGFloat(viewModel.total())/CGFloat(viewModel.total())) * 100, value: "Income", keyIcon: "figure.walk", keyColor: Color("Green"), totalValue: Double(viewModel.total())),
+            Ring(progress: (CGFloat(viewModel.total())/CGFloat(viewModel.total())) * 100, value: "Income", keyIcon: "figure.walk", keyColor: Color.green, totalValue: Double(viewModel.total())),
             Ring(progress: (CGFloat(viewModel.totalExpense())/CGFloat(viewModel.total()) ) * 100, value: "Expense", keyIcon: "flame.fill", keyColor: Color("Red") , totalValue: Double(viewModel.totalExpense()))
         ]
         
