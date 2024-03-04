@@ -8,30 +8,37 @@
 import SwiftUI
 
 struct IncomeLineView: View {
-    @StateObject var viewModel: IncomeLineViewModel
-    @FocusState var isInputActive: Bool
+    
+    @Environment(\.modelContext) private var modelContext
+
+    @State var income: Income
+    
+    @State var amount: Decimal = 0.0
+
     var body: some View {
             HStack {
                 
-                TextField("New Item", text: $viewModel.name)
-                    .onSubmit {
-                        viewModel.save()
-                    }
-                    .multilineTextAlignment(.leading)
-                    .focused($isInputActive)
+                TextField("New Item", text: $income.name)
+
                 Spacer()
-                
-                TextField("Amount...", value: $viewModel.amount, format: .currency(code: "USD"))
+
+                TextField("Amount", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
                     .onSubmit {
-                        viewModel.save()
+                        income.amount = amount
                     }
 
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
+            }
+            .onAppear {
+                if income.amount != .zero {
+                    amount = income.amount
+                }
             }
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
-                viewModel.save()
+                income.amount = amount
             }
+
     }
 }
 

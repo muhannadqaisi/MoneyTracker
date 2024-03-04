@@ -21,6 +21,8 @@
 		F9024AAB2837E0C50064862B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9024A7D2837E0C20064862B /* Persistence.swift */; };
 		F9024AAC2837E0C50064862B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9024A7E2837E0C40064862B /* Assets.xcassets */; };
 		F9024AAD2837E0C50064862B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9024A7E2837E0C40064862B /* Assets.xcassets */; };
+		F90F9D2D2B949DB800A489CF /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90F9D2C2B949DB800A489CF /* Income.swift */; };
+		F90F9D2E2B949DB800A489CF /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90F9D2C2B949DB800A489CF /* Income.swift */; };
 		F94EAA042995719500CE7787 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA032995719500CE7787 /* PieChartView.swift */; };
 		F94EAA06299A5FFD00CE7787 /* IncomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA05299A5FFD00CE7787 /* IncomeListViewModel.swift */; };
 		F94EAA07299A5FFD00CE7787 /* IncomeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94EAA05299A5FFD00CE7787 /* IncomeListViewModel.swift */; };
@@ -129,6 +131,7 @@
 		F9024A9C2837E0C50064862B /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9024AA02837E0C50064862B /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		F9024AA22837E0C50064862B /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		F90F9D2C2B949DB800A489CF /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
 		F94EAA032995719500CE7787 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		F94EAA05299A5FFD00CE7787 /* IncomeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListViewModel.swift; sourceTree = "<group>"; };
 		F94EAA0B299A614F00CE7787 /* IncomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListView.swift; sourceTree = "<group>"; };
@@ -288,6 +291,7 @@
 			children = (
 				F94EAA0B299A614F00CE7787 /* IncomeListView.swift */,
 				F94EAA11299A63DE00CE7787 /* IncomeLineView.swift */,
+				F90F9D2C2B949DB800A489CF /* Income.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -691,6 +695,7 @@
 				F94EAA76299BD36400CE7787 /* MembershipsListViewModel.swift in Sources */,
 				F95F2B2929BB1C910086F37E /* RingCardView.swift in Sources */,
 				F94EAA58299BCE6900CE7787 /* PersonalListViewModel.swift in Sources */,
+				F90F9D2D2B949DB800A489CF /* Income.swift in Sources */,
 				F94EAA43299BBC3E00CE7787 /* FoodsLineView.swift in Sources */,
 				F94EAA16299A7A7B00CE7787 /* IncomeAndExpenseViewModel.swift in Sources */,
 				F9024AAA2837E0C50064862B /* Persistence.swift in Sources */,
@@ -739,6 +744,7 @@
 				F94EAA4A299BCB5900CE7787 /* TransportationListViewModel.swift in Sources */,
 				F95F2B2A29BB1C910086F37E /* RingCardView.swift in Sources */,
 				F9B702382849D72A001BCA66 /* KeyBoardView.swift in Sources */,
+				F90F9D2E2B949DB800A489CF /* Income.swift in Sources */,
 				F94EAA35299BB9E200CE7787 /* SavingsLineView.swift in Sources */,
 				F94EAA59299BCE6900CE7787 /* PersonalListViewModel.swift in Sources */,
 				F94EAA77299BD36400CE7787 /* MembershipsListViewModel.swift in Sources */,
@@ -916,9 +922,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -947,9 +951,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

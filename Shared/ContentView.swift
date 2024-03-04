@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import SwiftData
 
 struct ContentView: View {
     
@@ -29,17 +30,33 @@ struct ContentView: View {
     @State var tabSelectedValue = 0
     @State var showViews: [Bool] = Array(repeating: false, count: 5)
     
+    @Query var incomes: [Income] = []
+
     var body: some View {
+        let firstIncome = incomes.first
         if showWelcome || UserDefaults.standard.welcomeScreenShownPlay4 {
             VStack{
-                RingCardView(viewModel: viewModel)
-                    .opacity(showViews[0] ? 1 : 0)
-                    .offset(y: showViews[0] ? 0 : 200)
+//                RingCardView(viewModel: viewModel)
+//                    .opacity(showViews[0] ? 1 : 0)
+//                    .offset(y: showViews[0] ? 0 : 200)
+                VStack {
+                    HStack {
+                        Text("Income")
+                            .fontWeight(.thin)
+                        Text(self.incomeTotal(),format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                    }
+                    HStack {
+                        Text("Expense")
+                            .fontWeight(.thin)
+                        Text("$0.00")
+                    }
+                }
+
                 LeftToBudget()
-                    .opacity(showViews[1] ? 1 : 0)
-                    .offset(y: showViews[1] ? 0 : 250)
+//                    .opacity(showViews[1] ? 1 : 0)
+//                    .offset(y: showViews[1] ? 0 : 250)
                 List{
-                    IncomeListView(viewModel: IncomeListViewModel(moc: viewContext))
+                    IncomeListView()
                     HousingListView(viewModel: HousingListViewModel(moc: viewContext))
                     SavingsListView(viewModel: SavingsListViewModel(moc: viewContext))
                     FoodsListView(viewModel: FoodsListViewModel(moc: viewContext))
@@ -214,6 +231,13 @@ struct ContentView: View {
         }
         
     }
+    func incomeTotal() -> Decimal {
+        var totalToday: Decimal = .zero
+        for item in incomes {
+            totalToday += item.amount
+        }
+        return totalToday
+    }
     
 }
 
@@ -278,6 +302,8 @@ struct DetailedView: View {
     var distance: Int = 0
     var viewModel = IncomeAndExpenseViewModel()
     
+    @Query var incomes: [Income] = []
+    
     var body: some View {
         HStack(alignment: .center, spacing: -12) {
             Image(systemName: imageName)
@@ -300,7 +326,7 @@ struct DetailedView: View {
             Spacer().frame(width:50)
             VStack(alignment: .leading) {
                 Spacer().frame(height:8)
-                Text("Income: \(subTitle * viewModel.total(), format: .currency(code: "USD"))")
+                Text("Income: \(subTitle * NSDecimalNumber(decimal: self.incomeTotal()).intValue, format: .currency(code: "USD"))")
                     .font(.system(size: 17, weight: .regular))
                     .accessibility(addTraits: .isHeader)
                     .foregroundColor(Color.green)
@@ -318,6 +344,13 @@ struct DetailedView: View {
         .padding(.top)
     }
     
+    func incomeTotal() -> Decimal {
+        var totalToday: Decimal = .zero
+        for item in incomes {
+            totalToday += item.amount
+        }
+        return totalToday
+    }
 }
 
 

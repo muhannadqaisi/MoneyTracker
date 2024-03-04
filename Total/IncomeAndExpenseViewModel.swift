@@ -7,6 +7,11 @@
 
 import Foundation
 import CoreData
+import SwiftData
+
+@Observable class incomeandExpense {
+    
+}
 
 class IncomeAndExpenseViewModel: ObservableObject{
     @Published var Incomes: [MTIncome] = []

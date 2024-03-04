@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 // MARK: Progress Ring Model and Sample Data
 struct Ring: Identifiable{
@@ -21,12 +22,14 @@ struct RingCardView: View {
     
     @ObservedObject var viewModel: IncomeAndExpenseViewModel
     
+    @Query var incomes: [Income] = []
+    
     var body: some View {
         
         let rings2: [Ring] = [
             
-            Ring(progress: (CGFloat(viewModel.total())/CGFloat(viewModel.total())) * 100, value: "Income", keyIcon: "figure.walk", keyColor: Color.green, totalValue: Double(viewModel.total())),
-            Ring(progress: (CGFloat(viewModel.totalExpense())/CGFloat(viewModel.total()) ) * 100, value: "Expense", keyIcon: "flame.fill", keyColor: Color("Red") , totalValue: Double(viewModel.totalExpense()))
+            Ring(progress: (CGFloat(NSDecimalNumber(decimal: self.incomeTotal()).intValue)/CGFloat(NSDecimalNumber(decimal: self.incomeTotal()).intValue)) * 100, value: "Income", keyIcon: "figure.walk", keyColor: Color.green, totalValue: Double(viewModel.total())),
+            Ring(progress: (CGFloat(viewModel.totalExpense())/CGFloat(viewModel.total())) * 100, value: "Expense", keyIcon: "flame.fill", keyColor: Color("Red") , totalValue: Double(viewModel.totalExpense()))
         ]
         
         VStack(spacing: 6){
@@ -83,6 +86,14 @@ struct RingCardView: View {
             RoundedRectangle(cornerRadius: 25, style: .continuous)
                 .fill(.ultraThinMaterial)
         }
+    }
+    
+    func incomeTotal() -> Decimal {
+        var totalToday: Decimal = .zero
+        for item in incomes {
+            totalToday += item.amount
+        }
+        return totalToday
     }
 }
 
