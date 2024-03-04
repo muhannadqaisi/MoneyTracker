@@ -14,16 +14,14 @@ struct IncomeListView: View {
 
     @Query var incomes: [Income] = []
     
-    //@State private var selectedIncome: Income?
-
     var body: some View {
         Section(header: Text("Income").font(.title3).foregroundColor(Color.green)){
             ForEach(incomes) { income in
                 IncomeLineView(income: income)
                     .swipeActions(edge: .trailing) {
                         Button(action: {
-                            //self.selectedIncome = income
-                            //self.showingDeleteAlert = true
+                            self.modelContext.delete(income)
+
                         }) {
                             Label("Delete", systemImage: "trash")
                         }
@@ -44,7 +42,7 @@ struct IncomeListView: View {
                            .tint(Color.green)
 
                    })
-                Text("Add incomes item")
+                Text("Add income item")
                     .foregroundColor(Color.gray)
             }
         }
@@ -53,17 +51,15 @@ struct IncomeListView: View {
         }
     }
     
-    func addIncome(name: String, amount: Decimal) {
+    func addIncome() {
         let income = Income()
-        income.amount = amount
-        income.name = name
         self.modelContext.insert(income)
         try? self.modelContext.save()
     }
     func loadIncomeData() {
         if incomes.count == 0 {
-            addIncome(name: "Paycheck", amount: 0)
-            addIncome(name: "Paycheck", amount: 0)
+            addIncome()
+            addIncome()
       }
     }
 }

@@ -10,7 +10,7 @@ import SwiftData
 
 @Model final public class Income {
     
-    var name: String = "New To Do Item"
+    var name: String = "Paycheck"
     
     var amount: Decimal = Decimal.zero
     

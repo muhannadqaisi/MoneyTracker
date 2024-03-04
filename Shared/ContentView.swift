@@ -11,6 +11,8 @@ import SwiftData
 
 struct ContentView: View {
     
+    @Environment(\.modelContext) private var modelContext
+
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var viewModel: IncomeAndExpenseViewModel
@@ -147,7 +149,11 @@ struct ContentView: View {
     
     private func didClickReset() {
         PersistenceController.shared.reset()
-        
+        do {
+            try modelContext.delete(model: Income.self)
+        } catch {
+            print("Failed to clear all Country and City data.")
+        }
     }
     
     
